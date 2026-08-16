@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stellar (Minseo) Kim — Responsive Matter</title>
+<meta name="description" content="Portfolio of Stellar (Minseo) Kim. Concept-led designer-researcher. Forms that respond to a person and transform.">
+
+<!-- PRIVACY: this line keeps the site out of Google and other search engines.
+     Delete it when you want the site to be findable. -->
+<meta name="robots" content="noindex, nofollow">
+
+<!--
+================================================================================
+  HOW THIS FILE WORKS
+================================================================================
+
+  FOLDER STRUCTURE — put index.html and these two folders in the same place:
+
+    index.html
+    images/
+      2014-movement/    board-01.jpg … board-04.jpg, look-01.jpg …
+      2016-joie/        board-01.jpg … board-04.jpg, look-01.jpg …
+      2019-engineering/ board-01.jpg … board-05.jpg
+      2026-doctoral/    board-01.jpg … board-03.jpg, worn-01.jpg …
+    video/
+      sma-actuation.mp4
+      lce-actuation.mp4
+
+  PLACEHOLDERS — every image slot below points at a file that does not exist
+  yet. Until the file is there, a grey placeholder appears showing the exact
+  filename and export size it is waiting for. Drop the real file into the
+  folder with that name and it appears. No code change needed.
+
+  EXPORT SPECS
+    Development boards   2000px wide, RGB, 72dpi, JPEG (quality 8–10)
+    Final look photos    1600–2000px wide, RGB, 72dpi, JPEG
+    Video loops          5–10s, ~1000px wide, 2–5MB, MP4 (H.264), no audio
+
+  TO ADD A SECTION LATER — copy any <section class="chapter"> block, change
+  the id, year, title and figures, and add one matching line to the spine
+  index near the top of <body>. Sections are in chronological order.
+
+  CAPTIONS — the sentences under each image live here as text, not baked into
+  the JPEG. Edit them directly in this file; they stay legible at any size.
+================================================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500&family=Big+Shoulders+Display:wght@300;400;500;600&family=Spectral:wght@200;300;400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ─── TOKENS ──────────────────────────────────────────────────────────────
+   Palette is mineral, not warm: plaster, blue-black, steel. There is no
+   accent colour. The interaction colour is INVERSION — ink and paper trade
+   places on hover and on the active year. Flat becomes solid, and back.   */
+:root{
+  --paper:#EDEDEA;
+  --paper-2:#E4E4E0;
+  --ink:#141618;
+  --void:#0B0C0D;
+  --steel:#6B6F73;
+  --rule:#C7C7C1;
+
+  --display:'Big Shoulders Display','Helvetica Neue',Arial,sans-serif;
+  --label:'Barlow Condensed','Helvetica Neue',Arial,sans-serif;
+  --body:'Spectral',Georgia,'Times New Roman',serif;
+
+  --spine:176px;
+  --gutter:clamp(20px,5vw,72px);
+  --measure:60ch;
+  --board-max:1180px;
+
+  --t:340ms cubic-bezier(.2,.7,.3,1);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--body);
+  font-weight:300;
+  font-size:17px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+img,video{display:block;max-width:100%;height:auto}
+a{color:inherit}
+
+::selection{background:var(--ink);color:var(--paper)}
+
+:focus-visible{
+  outline:2px solid var(--ink);
+  outline-offset:3px;
+}
+
+/* ─── SPINE ────────────────────────────────────────────────────────────────
+   A single hairline running the height of the page with the four years on it.
+   The current year fills solid as you scroll: a flat mark becoming a volume. */
+.spine{
+  position:fixed;
+  top:0; left:0; bottom:0;
+  width:var(--spine);
+  padding:clamp(24px,4vh,48px) 0 clamp(24px,4vh,48px) var(--gutter);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:2px;
+  z-index:40;
+  pointer-events:none;
+}
+.spine::before{
+  content:"";
+  position:absolute;
+  left:var(--gutter);
+  top:clamp(24px,4vh,48px);
+  bottom:clamp(24px,4vh,48px);
+  width:1px;
+  background:var(--rule);
+}
+.spine-link{
+  pointer-events:auto;
+  display:inline-block;
+  margin-left:-1px;
+  padding:5px 9px 5px 10px;
+  font-family:var(--label);
+  font-weight:500;
+  font-size:.76rem;
+  letter-spacing:.18em;
+  color:var(--steel);
+  text-decoration:none;
+  background:transparent;
+  transition:background var(--t),color var(--t);
+  white-space:nowrap;
+}
+.spine-link:hover{color:var(--ink)}
+.spine-link.is-active{
+  background:var(--ink);
+  color:var(--paper);
+}
+.spine-top{
+  position:absolute;
+  top:clamp(24px,4vh,48px);
+  left:var(--gutter);
+  font-family:var(--label);
+  font-weight:600;
+  font-size:.74rem;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--ink);
+  text-decoration:none;
+  pointer-events:auto;
+  padding:4px 0;
+}
+
+/* mobile year bar */
+.yearbar{
+  display:none;
+  position:sticky;
+  top:0;
+  z-index:40;
+  background:color-mix(in srgb,var(--paper) 92%,transparent);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--rule);
+  padding:9px var(--gutter);
+  gap:6px;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+}
+.yearbar::-webkit-scrollbar{display:none}
+.yearbar .spine-link{flex:0 0 auto}
+
+/* ─── PAGE FRAME ─────────────────────────────────────────────────────────── */
+.page{
+  margin-left:var(--spine);
+  padding:0 var(--gutter) 0 0;
+}
+.wrap{max-width:var(--board-max)}
+
+/* ─── OPENING ────────────────────────────────────────────────────────────── */
+.opening{
+  min-height:100svh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:clamp(72px,14vh,150px) 0 clamp(56px,10vh,110px);
+}
+.name{
+  font-family:var(--display);
+  font-weight:400;
+  font-size:clamp(2.3rem,7.4vw,5.4rem);
+  line-height:.9;
+  letter-spacing:-.03em;
+  margin:0;
+}
+.role{
+  font-family:var(--label);
+  font-weight:500;
+  font-size:.78rem;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--steel);
+  margin:20px 0 0;
+}
+.statement{
+  max-width:var(--measure);
+  margin:clamp(40px,7vh,76px) 0 0;
+  font-size:clamp(1.06rem,1.62vw,1.32rem);
+  font-weight:200;
+  line-height:1.66;
+}
+.statement p{margin:0 0 1.05em}
+.statement p:last-child{margin-bottom:0}
+
+.index{
+  margin-top:clamp(48px,9vh,96px);
+  border-top:1px solid var(--rule);
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  max-width:var(--board-max);
+}
+.index-item{
+  border-right:1px solid var(--rule);
+  padding:18px 18px 22px 0;
+  text-decoration:none;
+  display:block;
+  transition:background var(--t),color var(--t),padding-left var(--t);
+}
+.index-item:last-child{border-right:0}
+.index-item:hover{background:var(--ink);color:var(--paper);padding-left:14px}
+.index-year{
+  font-family:var(--display);
+  font-weight:500;
+  font-size:1.34rem;
+  letter-spacing:.02em;
+  line-height:1;
+  display:block;
+}
+.index-title{
+  display:block;
+  margin-top:6px;
+  font-size:.9rem;
+  font-weight:300;
+  line-height:1.35;
+  opacity:.72;
+}
+
+/* ─── CHAPTERS ───────────────────────────────────────────────────────────── */
+.chapter{
+  padding:clamp(80px,15vh,180px) 0 0;
+  border-top:1px solid var(--rule);
+  margin-top:clamp(80px,15vh,170px);
+}
+.chapter:first-of-type{margin-top:0}
+
+.chapter-head{margin-bottom:clamp(40px,7vh,72px)}
+.chapter-year{
+  font-family:var(--display);
+  font-weight:400;
+  font-size:clamp(3.6rem,11vw,9rem);
+  line-height:.86;
+  letter-spacing:-.03em;
+  margin:0;
+}
+.chapter-title{
+  margin:clamp(18px,3vh,30px) 0 0;
+  font-family:var(--body);
+  font-weight:300;
+  font-size:clamp(1.5rem,3vw,2.3rem);
+  line-height:1.18;
+  letter-spacing:-.012em;
+  max-width:22ch;
+}
+.chapter-place{
+  margin:12px 0 0;
+  font-family:var(--label);
+  font-weight:500;
+  font-size:.74rem;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--steel);
+}
+.chapter-text{
+  max-width:var(--measure);
+  margin:clamp(30px,5vh,52px) 0 0;
+  font-size:1.06rem;
+  line-height:1.68;
+}
+.chapter-text p{margin:0 0 1.1em}
+.chapter-text p:last-child{margin-bottom:0}
+
+/* ─── FIGURES ────────────────────────────────────────────────────────────── */
+.plate{margin:clamp(64px,12vh,140px) 0 0}
+.plate-img{
+  width:100%;
+  background:var(--paper-2);
+  cursor:zoom-in;
+  transition:opacity var(--t);
+}
+/* supporting plates: smaller than the ones carrying the argument */
+.plate.mid > .plate-img,
+.plate.mid > .loop{max-width:840px;margin-inline:auto}
+.plate.mid .plate-note{max-width:840px;margin-inline:auto}
+
+/* very tall plates: hold a readable width instead, and let them run long */
+.plate.tall > .plate-img{
+  max-height:none;
+  width:100%;
+  max-width:860px;
+  margin-inline:auto;
+}
+.plate.tall .plate-note{max-width:860px;margin-inline:auto}
+
+/* a featured plate breaks wider than the rest of the column */
+.plate.feature{margin-top:clamp(80px,15vh,170px)}
+.plate.feature > .plate-img{
+  max-height:none;
+  width:min(calc(100vw - var(--spine) - var(--gutter) * 2), 1440px);
+  max-width:none;
+  margin-left:0;
+}
+@media (max-width:1000px){
+  .plate.feature > .plate-img{width:100%;margin-left:0}
+}
+.plate-img:hover{opacity:.86}
+
+.plate-note{
+  display:grid;
+  grid-template-columns:minmax(0,190px) minmax(0,58ch);
+  gap:clamp(14px,3vw,40px);
+  margin-top:14px;
+  padding-top:12px;
+  border-top:1px solid var(--rule);
+}
+.plate-label{
+  font-family:var(--label);
+  font-weight:500;
+  font-size:.7rem;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--steel);
+  padding-top:3px;
+}
+.plate-caption{
+  margin:0;
+  font-size:.95rem;
+  line-height:1.6;
+  color:var(--ink);
+}
+
+/* two plates side by side — for boards that leave space when stood alone */
+.pair{
+  display:flex;
+  gap:clamp(14px,2.2vw,32px);
+  margin:clamp(64px,12vh,140px) 0 0;
+  align-items:flex-start;
+}
+.pair .plate{flex:1 1 0; min-width:0}
+.pair .plate{margin-top:0}
+.pair .plate > .plate-img{max-height:none;width:100%}
+.pair .plate-note{grid-template-columns:1fr;gap:6px}
+@media (max-width:800px){
+  .pair{display:block}
+  .pair .plate + .plate{margin-top:clamp(48px,9vh,90px)}
+}
+
+/* photographs grouped by look — all frames share one ratio, so a plain grid holds */
+.row{display:grid;gap:clamp(8px,1.1vw,16px)}
+.row-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.row-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:640px){
+  .row-3{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+/* looks grid — several photographs read as one block */
+.looks{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:clamp(8px,1.1vw,16px);
+  margin-top:clamp(46px,8vh,92px);
+}
+.looks .plate-img{aspect-ratio:3/4;object-fit:cover}
+
+/* a single full-length frame, centred rather than stretched */
+.look-main .plate-img{
+  max-width:min(100%,980px);
+  margin-inline:auto;
+}
+.look-main .plate-note{max-width:980px;margin-inline:auto}
+
+/* video */
+.loop{
+  width:100%;
+  background:var(--paper-2);
+}
+.loops{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:clamp(10px,1.4vw,20px);
+}
+
+/* ─── CLOSING ────────────────────────────────────────────────────────────── */
+.closing{
+  padding:clamp(90px,17vh,190px) 0 clamp(70px,12vh,130px);
+  border-top:1px solid var(--rule);
+  margin-top:clamp(80px,15vh,170px);
+}
+.closing-title{
+  font-family:var(--display);
+  font-weight:400;
+  font-size:clamp(2.8rem,8.6vw,7rem);
+  line-height:.9;
+  letter-spacing:-.03em;
+  margin:0 0 clamp(30px,5vh,54px);
+}
+.closing-text{
+  max-width:var(--measure);
+  font-size:clamp(1.02rem,1.5vw,1.22rem);
+  font-weight:200;
+  line-height:1.66;
+}
+.definition{
+  max-width:56ch;
+  margin-top:clamp(44px,7vh,80px);
+  padding-top:20px;
+  border-top:1px solid var(--ink);
+  font-size:1rem;
+  font-weight:300;
+  line-height:1.6;
+}
+.definition p{margin:0}
+.definition em{font-style:italic}
+
+.foot{
+  border-top:1px solid var(--rule);
+  padding:26px 0 60px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px 34px;
+  align-items:baseline;
+  font-family:var(--label);
+  font-size:.76rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--steel);
+}
+.foot a{
+  text-decoration:none;
+  border-bottom:1px solid var(--rule);
+  padding-bottom:2px;
+  transition:color var(--t),border-color var(--t);
+}
+.foot a:hover{color:var(--ink);border-color:var(--ink)}
+
+/* ─── LIGHTBOX ───────────────────────────────────────────────────────────── */
+.lightbox{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  background:var(--void);
+  display:none;
+  padding:clamp(16px,3.5vh,44px) clamp(16px,4vw,64px);
+  flex-direction:column;
+}
+.lightbox[open],.lightbox.is-open{display:flex}
+.lb-stage{
+  flex:1;
+  min-height:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.lb-stage img{
+  max-width:100%;
+  max-height:100%;
+  width:auto;
+  object-fit:contain;
+}
+.lb-bar{
+  flex:0 0 auto;
+  margin-top:18px;
+  padding-top:14px;
+  border-top:1px solid rgba(237,237,234,.22);
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:20px;
+  align-items:end;
+  color:var(--paper);
+}
+.lb-caption{
+  margin:0;
+  max-width:64ch;
+  font-size:.92rem;
+  font-weight:300;
+  line-height:1.55;
+  opacity:.86;
+}
+.lb-label{
+  display:block;
+  font-family:var(--label);
+  font-weight:500;
+  font-size:.68rem;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  opacity:.55;
+  margin-bottom:7px;
+}
+.lb-controls{display:flex;gap:8px;align-items:center}
+.lb-btn{
+  appearance:none;
+  background:transparent;
+  border:1px solid rgba(237,237,234,.3);
+  color:var(--paper);
+  font-family:var(--label);
+  font-weight:500;
+  font-size:.72rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  padding:9px 14px;
+  cursor:pointer;
+  transition:background var(--t),color var(--t),border-color var(--t);
+}
+.lb-btn:hover{background:var(--paper);color:var(--void);border-color:var(--paper)}
+.lb-btn[disabled]{opacity:.28;cursor:default}
+.lb-btn[disabled]:hover{background:transparent;color:var(--paper);border-color:rgba(237,237,234,.3)}
+.lb-count{
+  font-family:var(--label);
+  font-size:.72rem;
+  letter-spacing:.18em;
+  opacity:.55;
+  margin-right:8px;
+  white-space:nowrap;
+}
+body.lb-locked{overflow:hidden}
+
+/* ─── ACCORDION MODE ───────────────────────────────────────────────────
+   One collection open at a time. Everything inside an open section stays
+   fully visible — the development work is the argument, so it is never the
+   thing that gets hidden. */
+body.acc .chapter{
+  padding-top:0;
+  margin-top:0;
+  border-top:1px solid var(--rule);
+}
+body.acc .chapter-head{
+  margin:0;
+  padding:clamp(26px,4vh,42px) 0;
+  cursor:pointer;
+  display:grid;
+  grid-template-columns:1fr auto;
+  align-items:baseline;
+  gap:24px;
+  transition:opacity var(--t);
+}
+body.acc .chapter-head:hover{opacity:.6}
+body.acc .chapter-year{
+  font-size:clamp(2rem,4.6vw,3.4rem);
+  line-height:1;
+  transition:font-size var(--t);
+}
+body.acc .chapter-title{
+  font-size:clamp(1.1rem,1.8vw,1.5rem);
+  margin-top:10px;
+  max-width:34ch;
+}
+body.acc .chapter-place{font-size:.7rem}
+body.acc .chapter-mark{
+  font-family:var(--label);
+  font-weight:500;
+  font-size:.78rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--steel);
+  white-space:nowrap;
+}
+body.acc .chapter-body{display:none;padding-bottom:clamp(60px,10vh,120px)}
+body.acc .chapter.is-open .chapter-body{display:block}
+body.acc .chapter.is-open .chapter-year{font-size:clamp(3.2rem,9vw,7rem)}
+body.acc .chapter.is-open .chapter-head{cursor:default}
+body.acc .chapter.is-open .chapter-mark{color:var(--ink)}
+.chapter-mark{display:none}
+body.acc .chapter-mark{display:block}
+
+/* ─── TEMPORARY: layout comparison. Delete when decided. ──────────────── */
+#layoutswitch{
+  position:fixed; right:18px; bottom:18px; z-index:60;
+  display:flex; gap:6px; align-items:center;
+  background:var(--paper); border:1px solid var(--rule); padding:8px 10px;
+}
+#layoutswitch span{
+  font-family:var(--label); font-size:.68rem; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--steel); margin-right:4px;
+}
+#layoutswitch button{
+  appearance:none; background:transparent; border:1px solid var(--rule);
+  font-family:var(--label); font-weight:500; font-size:.72rem;
+  letter-spacing:.1em; padding:5px 10px; cursor:pointer; color:var(--steel);
+}
+#layoutswitch button.on{background:var(--ink); color:var(--paper); border-color:var(--ink)}
+
+/* ─── REVEAL ─────────────────────────────────────────────────────────────── */
+.rise{
+  opacity:0;
+  transform:translateY(16px);
+  transition:opacity 700ms ease,transform 700ms cubic-bezier(.2,.7,.3,1);
+}
+.rise.is-in{opacity:1;transform:none}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────────────────────── */
+@media (max-width:1000px){
+  .spine{display:none}
+  .yearbar{display:flex}
+  .page{margin-left:0;padding:0 var(--gutter)}
+  .index{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .index-item:nth-child(2){border-right:0}
+  .plate-note{grid-template-columns:1fr;gap:8px}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .looks{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .loops{grid-template-columns:1fr}
+  .index{grid-template-columns:1fr}
+  .index-item{border-right:0;border-bottom:1px solid var(--rule)}
+  .lb-bar{grid-template-columns:1fr;gap:14px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition-duration:1ms!important}
+  .rise{opacity:1;transform:none}
+}
+</style>
+</head>
+
+<body>
+
+<!-- ─── SPINE INDEX (desktop) ─────────────────────────────────────────────
+     Add one line here for each new section. -->
+<nav class="spine" aria-label="Chronology">
+  <a class="spine-top" href="#top">SK</a>
+  <a class="spine-link" href="#y2014" data-year="y2014">2014</a>
+  <a class="spine-link" href="#y2016" data-year="y2016">2016</a>
+  <a class="spine-link" href="#y2019" data-year="y2019">2019–24</a>
+  <a class="spine-link" href="#y2026" data-year="y2026">2023–26</a>
+  <a class="spine-link" href="#now" data-year="now">NOW</a>
+</nav>
+
+<!-- ─── YEAR BAR (mobile) ─────────────────────────────────────────────── -->
+<nav class="yearbar" aria-label="Chronology">
+  <a class="spine-link" href="#y2014" data-year="y2014">2014</a>
+  <a class="spine-link" href="#y2016" data-year="y2016">2016</a>
+  <a class="spine-link" href="#y2019" data-year="y2019">2019–24</a>
+  <a class="spine-link" href="#y2026" data-year="y2026">2023–26</a>
+  <a class="spine-link" href="#now" data-year="now">NOW</a>
+</nav>
+
+<main class="page" id="top">
+
+  <!-- ═══ OPENING ═════════════════════════════════════════════════════════ -->
+  <header class="opening">
+    <div class="wrap">
+      <h1 class="name">Stellar (Minseo) Kim</h1>
+      <p class="role">Concept-Led Designer-Researcher · Responsive Matter</p>
+
+      <div class="statement">
+        <p>I study forms that respond to a person and transform. In the beginning I was drawn to building — raising bold three-dimensional structures the way an architect raises a building. Then, in London, I encountered a structure that transformed, and something shifted: I saw that form could return, that it could move between the flat and the volumetric.</p>
+        <p>Since then, that reversibility has run through everything I make. I followed it from the hand to textiles, and on to structures that meet the body and matter that responds to it — teaching myself the language of engineering whenever the technology I needed did not yet exist.</p>
+        <p>This portfolio traces that path, from the first forms I built by hand to matter that answers a person. I have come to call the direction <em>Sentient Aesthetics</em>.</p>
+      </div>
+
+      <nav class="index" aria-label="Contents">
+        <a class="index-item" href="#y2014">
+          <span class="index-year">2014</span>
+          <span class="index-title">Awakening to Transformation — Movement in Space</span>
+        </a>
+        <a class="index-item" href="#y2016">
+          <span class="index-year">2016</span>
+          <span class="index-title">From Emotion to Form, and Back — Joie de Vivre</span>
+        </a>
+        <a class="index-item" href="#y2019">
+          <span class="index-year">2019—2024</span>
+          <span class="index-title">Crossing into Engineering</span>
+        </a>
+        <a class="index-item" href="#y2026">
+          <span class="index-year">2023—2026</span>
+          <span class="index-title">Reading the Body through Structure</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+
+  <!-- ═══ 2014 — MOVEMENT IN SPACE ════════════════════════════════════════ -->
+  <section class="chapter" id="y2014">
+    <div class="wrap">
+
+      <div class="chapter-head rise">
+        <p class="chapter-year">2014</p>
+        <h2 class="chapter-title">Awakening to Transformation — Movement in Space</h2>
+        <p class="chapter-place">Graduation Project · Central Saint Martins</p>
+      </div>
+
+      <div class="chapter-text rise">
+        <p>In the CSM library I came across an image of a transforming metal structure in a book, and something changed. Until then I had been absorbed in raising volume; now I was seized by the idea that form could return — that it could move between the flat and the volumetric.</p>
+        <p>In <em>Movement in Space</em>, my graduation project, a flat structure rises into volume when drawn by strings, and the whole panel attaches to a plain dress with magnets. Without the panel, the dress is simple. Attached, it becomes something else entirely. The strings are not fixed: the wearer draws them until the structure takes the shape they want. The form is set by the person wearing it. Detachable, reversible, and structural: this was the first time the mechanism that now runs through all my work took shape.</p>
+      </div>
+
+      <figure class="plate rise">
+        <img class="plate-img" src="images/2014-movement/movement_01_source.jpg"
+             alt="The transforming metal structure found in a book in the Central Saint Martins library.">
+        <figcaption class="plate-note">
+          <span class="plate-label">Inspiration</span>
+          <p class="plate-caption">The transforming structure I found in a book in the CSM library, opening across three stages. This is where the collection began.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="plate rise">
+        <img class="plate-img" src="images/2014-movement/movement_02_experiments.jpg" loading="lazy"
+             alt="Geometry from a mathematics book rebuilt in paper and moved to test how it transforms.">
+        <figcaption class="plate-note">
+          <span class="plate-label">Structure experiments</span>
+          <p class="plate-caption">Geometry taken from a mathematics book, rebuilt in paper and then moved — testing how far the structure opens, and what shape it takes at each stage.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="plate mid rise">
+        <img class="plate-img" src="images/2014-movement/movement_03_develop_sketch.jpg" loading="lazy"
+             alt="Design sketches worked against photographs of the paper studies.">
+        <figcaption class="plate-note">
+          <span class="plate-label">Design development</span>
+          <p class="plate-caption">Each structure drawn back onto the figure to test what it becomes as a garment — before and after the panel moves, marked on the same page.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="plate rise">
+        <img class="plate-img" src="images/2014-movement/movement_05_line_up.jpg" loading="lazy"
+             alt="Collection line-up: flat drawings of each look with fabric swatches.">
+        <figcaption class="plate-note">
+          <span class="plate-label">Line-up</span>
+          <p class="plate-caption">The collection resolved as flats, each look drawn against the fabric it would be made in.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="plate mid rise">
+        <img class="plate-img" src="images/2014-movement/movement_04_develop_garments.jpg" loading="lazy"
+             alt="Toiles and garment development on the dress form.">
+        <figcaption class="plate-note">
+          <span class="plate-label">Garment development</span>
+          <p class="plate-caption">Two looks from the line-up were made. No textile I could find held the shapes the paper had made, so I built them in a stiff sheet material used for architectural awnings — difficult to sew, but the only thing that behaved like the structure.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="plate look-main rise">
+        <img class="plate-img" src="images/2014-movement/look1_main.jpg" loading="lazy"
+             alt="Look one, Movement in Space." data-label="Look one">
+        <figcaption class="plate-note">
+          <span class="plate-label">Look one</span>
+          <p class="plate-caption">A structural panel drawn by strings, carried across the front of a plain base dress.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="plate rise">
+        <div class="row row-3">
+          <img class="plate-img" src="images/2014-movement/look1_a.jpg" loading="lazy"
+               alt="Look one, side." data-label="Look one" data-caption="The structure attaches to the base dress with magnets.">
+          <img class="plate-img" src="images/2014-movement/look1_b.jpg" loading="lazy"
+               alt="Look one, three-quarter." data-label="Look one" data-caption="The strings set how far the structure opens.">
+          <img class="plate-img" src="images/2014-movement/look1_c.jpg" loading="lazy"
+               alt="Look one, back." data-label="Look one" data-caption="Released, a plain long dress remains.">
+        </div>
+        <figcaption class="plate-note">
+          <span class="plate-label">Look one · detachable</span>
+          <p class="plate-caption">The front structure and the two pieces at the hem all attach with magnets. Released, a plain long dress remains.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="plate rise">
+        <div class="row row-2">
+          <img class="plate-img" src="images/2014-movement/look2_a.jpg" loading="lazy"
+               alt="Look two, front." data-label="Look two" data-caption="The structure and the fringe both attach with magnets.">
+          <img class="plate-img" src="images/2014-movement/look2_b.jpg" loading="lazy"
+               alt="Look two, side." data-label="Look two" data-caption="The strings hold whatever shape the wearer draws them to.">
+          <img class="plate-img" src="images/2014-movement/look3_a.jpg" loading="lazy"
+               alt="Look two, side." data-label="Look two" data-caption="Movement in Space, Central Saint Martins, 2014.">
+          <img class="plate-img" src="images/2014-movement/look3_b.jpg" loading="lazy"
+               alt="Look two, back." data-label="Look two" data-caption="The shaping at the back belongs to the dress itself.">
+        </div>
+        <figcaption class="plate-note">
+          <span class="plate-label">Look two · customisable</span>
+          <p class="plate-caption">A different structure, built for this look and held on the same way, with the fringe detachable too. The shaping at the back belongs to the dress itself.</p>
+        </figcaption>
+      </figure>
+
+    </div>
+  </section>
+
+
+  <!-- ═══ 2016 — JOIE DE VIVRE ════════════════════════════════════════════ -->
+  <section class="chapter" id="y2016">
+    <div class="wrap">
+
+      <div class="chapter-head rise">
+        <p class="chapter-year">2016</p>
+        <h2 class="chapter-title">From Emotion to Form, and Back — <em>Joie de Vivre</em></h2>
+        <p class="chapter-place">Graduation Collection · ArtEZ · Presented at Atelier Néerlandais, Paris</p>
+      </div>
+
+      <div class="chapter-text rise">
+        <p>The collection began with emotion. Drawing on the kinetic drawings of Heather Hansen and the expressiveness of Pina Bausch, I sat on the floor with large sheets of paper and drew with my whole body, releasing the spirit of freedom into movement. What the drawing left behind became the material: I photographed the charcoal residue on the floor and worked those images up into prints. Others came differently — white paint dripped across black cloth, drawn the same way — with the whole body, moving, a line drawn in Illustrator — and one of those I made twice over, a second version for the jersey worn beneath the outer piece, so that a single look would read as one thing. Each print was silkscreened onto its own cloth, some smooth, one where the screen itself carried the texture. The trace of the movement is what carries the emotion through the collection.</p>
+        <p>And then the same gesture became form. I sat on the floor again, drawing this time on a piece of calico as large as the charcoal sheets had been, cut parts of those lines away and draped it on the stand — but the silhouette came out long and elaborate, closer to eveningwear than to anything I wanted. So I reduced: a few simplified lines on A4 paper and on calico cut to the same size, sections cut away, the cut edges pinned at two or three points on a miniature stand until a volume stood up on its own.</p>
+        <p>Then the prints became the drawing. I printed what I had developed onto sheets of paper, cut away wherever the image seemed to ask for it, and draped those in miniature — and it was there that the looks of this collection came out. Prints that never reached cloth did their work here instead.</p>
+        <p>The last piece was made the other way round, and at full size: a rectangle of cloth cut to A0, lines drawn straight onto it in pen, parts cut away, draped on the full stand. I traced that same line into a print and bonded it onto the jersey worn beneath — the one absent, the other raised. Where the miniature had pins, the garments have magnets: release them and each outer piece lies flat as a rectangle again; join them and the same volume rises.</p>
+        <p>Emotion became movement, its trace became material, and incision and connection became form. What I was after was a free spirit that came through at every layer — in the act of drawing, in the prints and the texture they were given, in the silhouette itself, and finally on the skin of the people wearing it. And this reversible transformation became the central mechanism of everything I have made since.</p>
+        <p>In the portfolio I wrote that year, I set down an ambition I could not yet act on: to develop smart textiles — to make the material itself do what my hands were doing here.</p>
+      </div>
+
+      <figure class="plate rise">
+        <img class="plate-img" src="images/2016-joie/joie_01_reference.jpg" loading="lazy"
+             alt="Reference board: kinetic drawing, dance, and sculptural form.">
+        <figcaption class="plate-note">
+          <span class="plate-label">Inspiration</span>
+          <p class="plate-caption">Not my work. Drawing made with the whole body, and movement as the expression of freedom — the two things the collection set out from.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="plate rise">
+        <img class="plate-img" src="images/2016-joie/joie_02_prints.jpg" loading="lazy"
+             alt="Charcoal drawing on paper, print development from the residue, and the prints silkscreened onto cloth.">
+        <figcaption class="plate-note">
+          <span class="plate-label">Drawing into print</span>
+          <p class="plate-caption">Charcoal drawn on the floor with the whole body; the residue it left behind photographed and worked up into prints. Three were selected and silkscreened onto cloth, and two more came differently — white paint dripped across black fabric, and a line drawn in Illustrator, made a second time over for the jersey worn beneath the same outer piece.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="plate rise">
+        <img class="plate-img" src="images/2016-joie/joie_03_cut.jpg" loading="lazy"
+             alt="Draping experiments: lines drawn, parts cut away, draped on the stand and in miniature.">
+        <figcaption class="plate-note">
+          <span class="plate-label">Cut away</span>
+          <p class="plate-caption">Lines drawn freehand, parts of them cut away, and what remained draped on the stand. The first attempt at full size came out long and elaborate, so the lines were reduced and the work moved to paper and to calico at a fraction of the scale.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="plate rise">
+        <img class="plate-img" src="images/2016-joie/joie_05_wall.jpg" loading="lazy"
+             alt="The studio wall covered with photographs of every miniature draping trial.">
+        <figcaption class="plate-note">
+          <span class="plate-label">Selection</span>
+          <p class="plate-caption">Every trial photographed and put up on the wall, so the collection could be chosen by comparison rather than one piece at a time. This is where the looks came out.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="plate rise">
+        <img class="plate-img" src="images/2016-joie/joie_04_silhouettes.jpg" loading="lazy"
+             alt="Each selected silhouette worked out at body scale in mock-up material, with its flat pattern.">
+        <figcaption class="plate-note">
+          <span class="plate-label">Structure at body scale</span>
+          <p class="plate-caption">Each chosen silhouette rebuilt at the size of a person, with the flat pattern it came from — and the under-dress that would sit beneath it developed alongside.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="plate rise">
+        <img class="plate-img" src="images/2016-joie/joie_06_garment.jpg" loading="lazy"
+             alt="Each look taken from small toile to full size and into final cloth, with magnets set between the layers.">
+        <figcaption class="plate-note">
+          <span class="plate-label">Pattern to garment</span>
+          <p class="plate-caption">Each piece scaled up in stages until it met a body. One look was then remade in soft cloth from exactly the same pattern, and what came out was different enough to enter the collection as a look of its own. Magnets set between the layers do what the pins had done on the miniature: release them and the piece lies flat as a rectangle again.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="plate feature rise">
+        <img class="plate-img" src="images/2016-joie/look_01_lineup.jpg" loading="lazy"
+             alt="The full collection, eight looks." data-label="The collection">
+        <figcaption class="plate-note">
+          <span class="plate-label">The collection</span>
+          <p class="plate-caption">Joie de Vivre, graduation collection, ArtEZ. Presented at Atelier Néerlandais, Paris, 2016.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="plate rise">
+        <div class="row row-2">
+          <img class="plate-img" src="images/2016-joie/look_03_detail.jpg" loading="lazy"
+               alt="Detail: printed strips cut away, with a magnet closure." data-label="Detail" data-caption="The print cut into strips, and one of the magnets that holds the piece to the dress beneath.">
+          <img class="plate-img" src="images/2016-joie/look_04_backs.jpg" loading="lazy"
+               alt="The prints seen from behind." data-label="Detail" data-caption="The prints as they sit on the jersey worn beneath the outer pieces.">
+        </div>
+        <figcaption class="plate-note">
+          <span class="plate-label">Print on the body</span>
+          <p class="plate-caption">The same line worked two ways: cut out of the outer piece, and bonded onto the jersey beneath it.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="plate rise">
+        <img class="plate-img" src="images/2016-joie/look_02_group.jpg" loading="lazy"
+             alt="The collection presented in Paris." data-label="Presentation">
+        <figcaption class="plate-note">
+          <span class="plate-label">Presentation</span>
+          <p class="plate-caption">Shown as a performance rather than a runway, in a room the audience moved through.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="plate rise">
+        <div class="row row-2">
+          <img class="plate-img" src="images/2016-joie/look_05_prints.jpg" loading="lazy"
+               alt="Two looks, two prints." data-label="Presentation" data-caption="Two of the prints as they read at a distance.">
+          <img class="plate-img" src="images/2016-joie/look_06_face.jpg" loading="lazy"
+               alt="The drawing carried onto the face." data-label="Presentation" data-caption="The same marks that became print, painted onto the face.">
+        </div>
+        <figcaption class="plate-note">
+          <span class="plate-label">The drawing on the skin</span>
+          <p class="plate-caption">The make-up was drawn, not applied: the same marks that had become print were carried onto the face, so the gesture reached the body as well as the cloth.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="plate rise">
+        <img class="plate-img" src="images/2016-joie/look_07_backstage.jpg" loading="lazy"
+             alt="Backstage before the presentation." data-label="Backstage">
+        <figcaption class="plate-note">
+          <span class="plate-label">Backstage</span>
+          <p class="plate-caption">Paris, 2016.</p>
+        </figcaption>
+      </figure>
+
+    </div>
+  </section>
+
+
+  <!-- ═══ 2019–2024 — CROSSING INTO ENGINEERING ═══════════════════════════ -->
+  <section class="chapter" id="y2019">
+    <div class="wrap">
+
+      <div class="chapter-head rise">
+        <p class="chapter-year">2019—2024</p>
+        <h2 class="chapter-title">Crossing into Engineering</h2>
+        <p class="chapter-place">Shape-Memory Alloy · Liquid Crystal Elastomer 4D Printing</p>
+      </div>
+
+      <div class="chapter-text rise">
+        <p>To realize transforming material through the material itself rather than through my hands, I had to understand the technology directly. I designed custom shape-memory alloy geometries, reshaping the material from its default straight form into the zigzag profiles my folding structure required; working through repeated iterations with a fabrication partner, I arrived at the exact size and form I had drawn — making the material follow the structure I intended, rather than the other way around.</p>
+        <p>Shape-memory alloy only moves one way, though — it takes the new shape and holds it — and it is metal: stiff against cloth, and awkward to join to it. Shape-memory polymer did not return on its own either. Liquid crystal elastomer was the first material that met both conditions, and printing it directly onto the textile was how to place it exactly where the structure needed it. That is what I went looking for a lab to do.</p>
+        <p>Working with a liquid crystal elastomer formulation developed by an engineering lab, I printed across a range of textile substrates to determine which would hold the material and actuate reliably, identifying the fabric that gave both stable adhesion and effective folding. On that substrate I developed a series of actuation patterns, testing how printed geometry governs the direction and degree of transformation, until the collaboration ended.</p>
+        <p>These material collaborations ran alongside my doctoral research rather than forming part of it. The first did not survive contact with cloth: patterns I designed were printed and drawn into fibre, which I stitched into fabric, and the fold would not return. I moved to a second lab, where the actuation did work, and kept developing by printing while fibre work ran in parallel — largely supplying what an engineering lab does not have: what a fibre must satisfy before it can be spun, stitched and woven at all.</p>
+        <p>What I had been doing by hand since 2014 — making a form open, and return — was now happening in the material itself.</p>
+      </div>
+
+      <figure class="plate rise">
+        <img class="plate-img" src="images/2019-engineering/engineering_01_concept.jpg" loading="lazy"
+             alt="The concept proposed in 2019: a sensed condition triggers heat, and the form changes reversibly.">
+        <figcaption class="plate-note">
+          <span class="plate-label">Concept · 2019</span>
+          <p class="plate-caption">The mechanism I proposed to the engineering lab in 2019: a condition is sensed, a heating element responds, and the form changes — then returns as it cools. The pieces shown here are from the liquid crystal elastomer work that eventually achieved it, four years later.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="plate rise">
+        <img class="plate-img" src="images/2019-engineering/engineering_02_sma_design.jpg" loading="lazy"
+             alt="Shape-memory alloy: design drawings, formed alloy, and the alloy set into textile structures before and after heat.">
+        <figcaption class="plate-note">
+          <span class="plate-label">Shape-memory alloy</span>
+          <p class="plate-caption">The alloy comes as straight wire, which could not hold the folding structure I intended. I drew zigzag geometries and, through iterations with a fabrication partner, had forming jigs made to those drawings — making the material follow the structure rather than the other way around.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="plate rise">
+        <img class="plate-img" src="images/2019-engineering/engineering_03_sma_folding.jpg" loading="lazy"
+             alt="Folding structures developed in paper, then built in textile with the alloy set into the folds.">
+        <figcaption class="plate-note">
+          <span class="plate-label">Folding structure</span>
+          <p class="plate-caption">The fold was designed first in paper, then built in cloth with the alloy running along the fold lines, so that the structure and the actuator share one geometry. Under heat it takes the folded shape — and holds it. The movement goes one way only.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="plate rise">
+        <img class="plate-img" src="images/2019-engineering/engineering_04_lce_substrate.jpg" loading="lazy"
+             alt="Liquid crystal elastomer printed across a range of textile substrates and compared.">
+        <figcaption class="plate-note">
+          <span class="plate-label">Substrate selection · LCE</span>
+          <p class="plate-caption">The engineering lab developed the formulation; I mixed to that ratio and printed across a range of fabrics, comparing how the line held on surfaces of differing hydrophobicity. The final choice was made on adhesion and on how effectively the printed line folded.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="plate rise">
+        <img class="plate-img" src="images/2019-engineering/engineering_05_lce_patterns.jpg" loading="lazy"
+             alt="Actuation patterns designed, printed, heated and released.">
+        <figcaption class="plate-note">
+          <span class="plate-label">Actuation patterns · LCE</span>
+          <p class="plate-caption">Patterns I drew and printed on the chosen fabric — lines, chevrons, a spiral — each folding in a different direction under heat and flattening again as it cools. Here the transformation returns.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="plate rise">
+        <img class="plate-img" src="images/2019-engineering/engineering_06_lce_variation.jpg" loading="lazy"
+             alt="Line spacing varied systematically and the resulting actuation compared.">
+        <figcaption class="plate-note">
+          <span class="plate-label">Pattern variation · LCE</span>
+          <p class="plate-caption">Spacing and offset varied step by step within a single pattern, to find how far printed geometry alone can govern the direction and degree of the fold.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="plate mid rise">
+        <video class="loop" src="video/sma_actuation.mp4" muted autoplay loop playsinline preload="metadata"></video>
+        <figcaption class="plate-note">
+          <span class="plate-label">Actuation · SMA</span>
+          <p class="plate-caption">The zigzag-formed alloy drawing the folded textile closed under a heat gun. Sped up; the change takes about twenty seconds, and it does not come back.</p>
+        </figcaption>
+      </figure>
+
+      <div class="loops rise">
+        <figure class="plate" style="margin-top:0">
+          <video class="loop" src="video/lce_wave.mp4" muted autoplay loop playsinline preload="metadata"></video>
+          <figcaption class="plate-note">
+            <span class="plate-label">Actuation · LCE · wave</span>
+            <p class="plate-caption">Lines printed at even intervals: the cloth lifts into a repeating wave as the plate heats, and lies flat again as it cools.</p>
+          </figcaption>
+        </figure>
+        <figure class="plate" style="margin-top:0">
+          <video class="loop" src="video/lce_actuation.mp4" muted autoplay loop playsinline preload="metadata"></video>
+          <figcaption class="plate-note">
+            <span class="plate-label">Actuation · LCE · curl</span>
+            <p class="plate-caption">The same material, a different printed geometry: here the sheet curls right over. The pattern decides the shape the fold takes.</p>
+          </figcaption>
+        </figure>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══ 2026 — DOCTORAL RESEARCH ════════════════════════════════════════ -->
+  <section class="chapter" id="y2026">
+    <div class="wrap">
+
+      <div class="chapter-head rise">
+        <p class="chapter-year">2023—2026</p>
+        <h2 class="chapter-title">Reading the Body through Structure</h2>
+        <p class="chapter-place">Doctoral Research · Yonsei University</p>
+      </div>
+
+      <div class="chapter-text rise">
+        <p>In my doctoral research I made form itself the principle of sensing. I developed a wearable sensor that reads the breath not through how much a material stretches, but through the change in contact area that structure creates — designing the inner three-dimensional structure and the outer pattern together, and building every component to be detachable, modular, and adjustable in size. I carried it from concept to a wireless monitoring prototype and validated how it behaves on the body under real wearing conditions.</p>
+      </div>
+
+      <figure class="plate rise">
+        <img class="plate-img" src="images/2023-doctoral/doctoral_01_beltsystem_patterns.jpg" loading="lazy"
+             alt="Belt system construction and the six structural patterns tested.">
+        <figcaption class="plate-note">
+          <span class="plate-label">Structural matrix</span>
+          <p class="plate-caption">Three interweaving patterns — zigzag, moss, pile — each tested in vertical and horizontal layout, so that form could be isolated as the variable and read directly against sensing performance.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="plate rise">
+        <img class="plate-img" src="images/2023-doctoral/doctoral_02_fillers.jpg" loading="lazy"
+             alt="The filler layer in three sizes.">
+        <figcaption class="plate-note">
+          <span class="plate-label">Filler</span>
+          <p class="plate-caption">The inner three-dimensional structure. As the chest expands, the inner filler and the outer pattern press against one another and the area where they touch changes — and that change is what the sensor reads. Inner and outer were designed together, which is why structure rather than material is the design variable here.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="plate rise">
+        <img class="plate-img" src="images/2023-doctoral/doctoral_03_belts.jpg" loading="lazy"
+             alt="The constructed belts: zigzag in horizontal layout and moss in vertical layout.">
+        <figcaption class="plate-note">
+          <span class="plate-label">Constructed belts</span>
+          <p class="plate-caption">Built as three separable layers — pattern part, filler, base band — so that any combination can be exchanged without remaking the belt.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="plate rise">
+        <img class="plate-img" src="images/2023-doctoral/doctoral_04_connection.jpg" loading="lazy"
+             alt="Assembly sequence and the conductive thread connection method.">
+        <figcaption class="plate-note">
+          <span class="plate-label">Connection method</span>
+          <p class="plate-caption">A single continuous conductive thread runs from the rubber through the winding and spiral stitch to the snap interface, so the electrical path never breaks at a joint.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="plate rise">
+        <img class="plate-img" src="images/2023-doctoral/doctoral_05_sensor.jpg" loading="lazy"
+             alt="The sensor module and the snap-attached readout board.">
+        <figcaption class="plate-note">
+          <span class="plate-label">Sensor module</span>
+          <p class="plate-caption">The readout board attaches by snap fasteners and folds inside the pattern body, so the electronics are enclosed by the structure rather than mounted on top of it.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="plate rise">
+        <img class="plate-img" src="images/2023-doctoral/doctoral_06_modular.jpg" loading="lazy"
+             alt="All components separated, and assembled.">
+        <figcaption class="plate-note">
+          <span class="plate-label">Modular assembly</span>
+          <p class="plate-caption">Every component detachable and adjustable in size, so a single device can be reconfigured rather than rebuilt.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="plate rise feature">
+        <img class="plate-img" src="images/2023-doctoral/doctoral_07_worn.jpg" loading="lazy"
+             alt="The device worn, seen from four sides, with parallel and crossed straps.">
+        <figcaption class="plate-note">
+          <span class="plate-label">Worn · four configurations</span>
+          <p class="plate-caption">The straps can be worn parallel or crossed, so one device meets different bodies and different ways of wearing it.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="plate rise">
+        <img class="plate-img" src="images/2023-doctoral/doctoral_08_wireless.jpg" loading="lazy"
+             alt="The wireless system and the live breathing signal read on a phone, worn on the body.">
+        <figcaption class="plate-note">
+          <span class="plate-label">Wireless prototype · on the body</span>
+          <p class="plate-caption">Carried from concept to a working wireless prototype and validated in wear: the breath read as a live waveform. There is no added sensing component — the structure is the sensor.</p>
+        </figcaption>
+      </figure>
+
+    </div>
+  </section>
+
+
+  <!-- ═══ NOW ═════════════════════════════════════════════════════════════ -->
+  <section class="closing" id="now">
+    <div class="wrap">
+      <h2 class="closing-title">Now —<br>Responsive Matter</h2>
+      <div class="closing-text">
+        <p>I am now moving toward research in which form senses a person and transforms in answer. I want to resolve which forms modulate a person's state — the moment a clouded mind wakes and attention is drawn — and to follow that principle outward from the body toward the space that surrounds it. The form I once raised by hand, and learned in London to transform, now returns as matter that responds to a person.</p>
+      </div>
+
+      <div class="definition">
+        <p><em>Sentient Aesthetics</em>: form that senses, and the aesthetic judgment of what that sensing does to the person who meets it. Responsive matter is what I work with; this is what I work toward.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <span>Stellar (Minseo) Kim</span>
+    <a href="mailto:stellar.k.research@gmail.com">stellar.k.research@gmail.com</a>
+    <span>Curriculum vitae on request</span>
+  </footer>
+
+</main>
+
+
+<!-- TEMPORARY: layout comparison. Delete this block when decided. -->
+<div id="layoutswitch">
+  <span>Layout</span>
+  <button data-m="scroll" class="on">Continuous</button>
+  <button data-m="acc">One at a time</button>
+</div>
+
+<!-- ═══ LIGHTBOX ═══════════════════════════════════════════════════════════ -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged image">
+  <div class="lb-stage"><img id="lb-img" alt=""></div>
+  <div class="lb-bar">
+    <p class="lb-caption"><span class="lb-label" id="lb-label"></span><span id="lb-caption"></span></p>
+    <div class="lb-controls">
+      <span class="lb-count" id="lb-count"></span>
+      <button class="lb-btn" id="lb-prev" type="button" aria-label="Previous image">Prev</button>
+      <button class="lb-btn" id="lb-next" type="button" aria-label="Next image">Next</button>
+      <button class="lb-btn" id="lb-close" type="button" aria-label="Close">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ── Placeholders ───────────────────────────────────────────────────────
+     If an image file is not there yet, draw a grey card showing the exact
+     filename and export size it is waiting for. Drop the real file in and
+     the placeholder disappears on its own.                                */
+  function placeholderFor(img){
+    var w = parseInt(img.dataset.w || 2000, 10);
+    var h = parseInt(img.dataset.h || 1400, 10);
+    var path = img.getAttribute('src') || '';
+    var name = path.split('/').pop();
+    var folder = path.split('/').slice(0,-1).join('/');
+    var svg =
+      '<svg xmlns="http://www.w3.org/2000/svg" width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'">'+
+      '<rect width="'+w+'" height="'+h+'" fill="#E4E4E0"/>'+
+      '<rect x="12" y="12" width="'+(w-24)+'" height="'+(h-24)+'" fill="none" stroke="#C7C7C1" stroke-width="2"/>'+
+      '<line x1="12" y1="12" x2="'+(w-12)+'" y2="'+(h-12)+'" stroke="#D8D8D3" stroke-width="2"/>'+
+      '<line x1="'+(w-12)+'" y1="12" x2="12" y2="'+(h-12)+'" stroke="#D8D8D3" stroke-width="2"/>'+
+      '<text x="'+(w/2)+'" y="'+(h/2-14)+'" text-anchor="middle" font-family="ui-monospace,Menlo,monospace" font-size="34" fill="#6B6F73">'+folder+'/'+name+'</text>'+
+      '<text x="'+(w/2)+'" y="'+(h/2+34)+'" text-anchor="middle" font-family="ui-monospace,Menlo,monospace" font-size="26" fill="#9A9E9F">export '+w+' px wide · RGB · 72 dpi</text>'+
+      '</svg>';
+    return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+  }
+
+  var images = Array.prototype.slice.call(document.querySelectorAll('.plate-img'));
+
+  /* A plate taller than it is wide gets held to a readable width instead of
+     being squeezed to fit the screen height. Measured from the file, so new
+     boards need no declared dimensions. */
+  images.forEach(function(img){
+    img.addEventListener('load', function(){
+      if(img.dataset.missing === 'true') return;
+      var fig = img.closest('figure');
+      if(!fig || fig.classList.contains('feature')) return;
+      if(img.naturalHeight / img.naturalWidth > 1.25) fig.classList.add('tall');
+      /* inside a pair, share the row in proportion to shape → equal heights */
+      if(fig.parentElement && fig.parentElement.classList.contains('pair')){
+        fig.style.flexGrow = (img.naturalWidth / img.naturalHeight).toFixed(4);
+      }
+    });
+  });
+  images.forEach(function(img){
+    /* Only ever swap in a placeholder on a real failed fetch. A lazy image
+       that simply has not started loading is not a failure. */
+    img.addEventListener('error', function handle(){
+      img.removeEventListener('error', handle);
+      if(img.dataset.missing === 'true') return;
+      img.dataset.missing = 'true';
+      img.removeAttribute('loading');
+      img.src = placeholderFor(img);
+    });
+  });
+
+  /* Hide a video slot until its file exists, so empty players never show. */
+  Array.prototype.slice.call(document.querySelectorAll('.loop')).forEach(function(v){
+    v.addEventListener('error', function(){
+      var fig = v.closest('figure');
+      if(fig) fig.style.display = 'none';
+    }, true);
+  });
+
+  /* ── Lightbox ─────────────────────────────────────────────────────────── */
+  var lb        = document.getElementById('lightbox');
+  var lbImg     = document.getElementById('lb-img');
+  var lbLabel   = document.getElementById('lb-label');
+  var lbCaption = document.getElementById('lb-caption');
+  var lbCount   = document.getElementById('lb-count');
+  var btnPrev   = document.getElementById('lb-prev');
+  var btnNext   = document.getElementById('lb-next');
+  var btnClose  = document.getElementById('lb-close');
+  var group = [], idx = 0, lastFocus = null;
+
+  function metaFor(img){
+    var fig = img.closest('figure');
+    var label = img.dataset.label || (fig ? (fig.querySelector('.plate-label')||{}).textContent : '') || '';
+    var caption = img.dataset.caption || (fig ? (fig.querySelector('.plate-caption')||{}).textContent : '') || '';
+    return {label: label.trim(), caption: caption.trim()};
+  }
+
+  function show(i){
+    idx = i;
+    var img = group[idx];
+    var m = metaFor(img);
+    lbImg.src = img.currentSrc || img.src;
+    lbImg.alt = img.alt || '';
+    lbLabel.textContent = m.label;
+    lbCaption.textContent = m.caption;
+    lbCount.textContent = (idx+1) + ' / ' + group.length;
+    btnPrev.disabled = group.length < 2;
+    btnNext.disabled = group.length < 2;
+  }
+
+  function open(img){
+    var section = img.closest('section, header') || document;
+    group = Array.prototype.slice.call(section.querySelectorAll('.plate-img'));
+    if(group.indexOf(img) === -1) group = [img];
+    lastFocus = document.activeElement;
+    lb.classList.add('is-open');
+    document.body.classList.add('lb-locked');
+    show(group.indexOf(img));
+    btnClose.focus();
+  }
+
+  function close(){
+    lb.classList.remove('is-open');
+    document.body.classList.remove('lb-locked');
+    lbImg.removeAttribute('src');
+    if(lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  function step(d){
+    if(group.length < 2) return;
+    show((idx + d + group.length) % group.length);
+  }
+
+  images.forEach(function(img){
+    img.tabIndex = 0;
+    img.setAttribute('role','button');
+    img.addEventListener('click', function(){ open(img); });
+    img.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); open(img); }
+    });
+  });
+
+  btnPrev.addEventListener('click', function(){ step(-1); });
+  btnNext.addEventListener('click', function(){ step(1); });
+  btnClose.addEventListener('click', close);
+  lb.addEventListener('click', function(e){
+    if(e.target === lb || e.target.classList.contains('lb-stage')) close();
+  });
+  document.addEventListener('keydown', function(e){
+    if(!lb.classList.contains('is-open')) return;
+    if(e.key === 'Escape') close();
+    if(e.key === 'ArrowLeft') step(-1);
+    if(e.key === 'ArrowRight') step(1);
+  });
+
+  /* ── TEMPORARY: layout comparison. Delete when decided. ────────────── */
+  var chapters = Array.prototype.slice.call(document.querySelectorAll('.chapter'));
+  chapters.forEach(function(ch){
+    var wrap = ch.querySelector('.wrap');
+    var head = ch.querySelector('.chapter-head');
+    if(!wrap || !head) return;
+    var body = document.createElement('div');
+    body.className = 'chapter-body';
+    while(head.nextSibling) body.appendChild(head.nextSibling);
+    wrap.appendChild(body);
+    var mark = document.createElement('span');
+    mark.className = 'chapter-mark';
+    head.appendChild(mark);
+    head.addEventListener('click', function(){
+      if(!document.body.classList.contains('acc')) return;
+      if(ch.classList.contains('is-open')) return;
+      chapters.forEach(function(c){ c.classList.remove('is-open'); });
+      ch.classList.add('is-open');
+      setMarks();
+      ch.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
+  function setMarks(){
+    chapters.forEach(function(c){
+      var m = c.querySelector('.chapter-mark');
+      if(m) m.textContent = c.classList.contains('is-open') ? 'Open' : 'View';
+    });
+  }
+  var ls = document.getElementById('layoutswitch');
+  if(ls){
+    ls.addEventListener('click', function(e){
+      var b = e.target.closest('button'); if(!b) return;
+      var acc = b.dataset.m === 'acc';
+      document.body.classList.toggle('acc', acc);
+      if(acc && !document.querySelector('.chapter.is-open')){
+        chapters[0].classList.add('is-open');
+      }
+      setMarks();
+      Array.prototype.forEach.call(ls.querySelectorAll('button'), function(x){
+        x.classList.toggle('on', x === b);
+      });
+    });
+  }
+  /* opening a year from the index opens that section too */
+  Array.prototype.forEach.call(document.querySelectorAll('.spine-link, .index-item'), function(a){
+    a.addEventListener('click', function(){
+      if(!document.body.classList.contains('acc')) return;
+      var id = (a.getAttribute('href')||'').replace('#','');
+      var target = document.getElementById(id);
+      if(!target || !target.classList.contains('chapter')) return;
+      chapters.forEach(function(c){ c.classList.remove('is-open'); });
+      target.classList.add('is-open');
+      setMarks();
+    });
+  });
+  setMarks();
+
+  /* ── Active year on the spine ─────────────────────────────────────────── */
+  var links = Array.prototype.slice.call(document.querySelectorAll('.spine-link'));
+  var targets = Array.prototype.slice.call(document.querySelectorAll('.chapter, .closing'));
+
+  if('IntersectionObserver' in window){
+    var spy = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(!entry.isIntersecting) return;
+        var id = entry.target.id;
+        links.forEach(function(l){
+          l.classList.toggle('is-active', l.dataset.year === id);
+        });
+      });
+    }, {rootMargin:'-45% 0px -50% 0px', threshold:0});
+    targets.forEach(function(t){ spy.observe(t); });
+
+    /* ── Reveal on scroll ─────────────────────────────────────────────── */
+    var reveal = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-in');
+          reveal.unobserve(entry.target);
+        }
+      });
+    }, {rootMargin:'0px 0px -8% 0px', threshold:0.04});
+    Array.prototype.slice.call(document.querySelectorAll('.rise')).forEach(function(el){
+      reveal.observe(el);
+    });
+  } else {
+    Array.prototype.slice.call(document.querySelectorAll('.rise')).forEach(function(el){
+      el.classList.add('is-in');
+    });
+  }
+})();
+</script>
+</body>
+</html>

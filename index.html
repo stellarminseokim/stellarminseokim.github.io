@@ -397,7 +397,9 @@ a{color:inherit}
 .look-main .plate-note{max-width:980px;margin-inline:auto}
 
 /* a film, not a loop: controls, and nothing loaded until asked for */
-.film{width:100%;background:var(--void);display:block}
+.film{width:100%;max-width:900px;margin-inline:auto;background:var(--void);display:block}
+.plate.closer > .plate-img{max-width:580px;margin-inline:auto}
+.plate.closer .plate-note{max-width:580px;margin-inline:auto}
 
 /* video */
 .loop{
@@ -936,7 +938,7 @@ body.acc .chapter-mark{display:block}
         </figcaption>
       </figure>
 
-      <figure class="plate mid rise">
+      <figure class="plate closer rise">
         <img class="plate-img" src="images/2016-joie/film_09.jpg" loading="lazy"
              alt="The striped print with the cut strips lifting away." data-label="Detail">
         <figcaption class="plate-note">
@@ -948,7 +950,7 @@ body.acc .chapter-mark{display:block}
       <figure class="plate rise">
         <video class="film" src="video/joie_film.mp4" controls preload="none"
                poster="images/2016-joie/look_08_film.jpg"></video>
-        <figcaption class="plate-note">
+        <figcaption class="plate-note" style="max-width:900px;margin-inline:auto">
           <span class="plate-label">Film</span>
           <p class="plate-caption">The same pieces filmed again, and directed differently. The Paris presentation was the joy itself; this is the way to it — difficulty worked through, and then left behind for somewhere better. That is what <em>joie de vivre</em> means to me: not the pleasure of a moment, but what is understood on the way out of one. Film by Studio Julius Thissen; hair and make-up by Vannessa Chan.</p>
         </figcaption>

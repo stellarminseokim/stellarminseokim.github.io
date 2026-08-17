@@ -372,6 +372,10 @@ a{color:inherit}
 .row{display:grid;gap:clamp(8px,1.1vw,16px)}
 .row-2{grid-template-columns:repeat(2,minmax(0,1fr))}
 .row-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+
+/* a grid of looks reads better held in from the full column */
+.plate.looks-grid .row{max-width:900px;margin-inline:auto}
+.plate.looks-grid .plate-note{max-width:900px;margin-inline:auto}
 @media (max-width:640px){
   .row-3{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
@@ -905,7 +909,7 @@ body.acc .chapter-mark{display:block}
         </figcaption>
       </figure>
 
-      <figure class="plate rise">
+      <figure class="plate looks-grid rise">
         <div class="row row-3">
           <img class="plate-img" src="images/2016-joie/film_01.jpg" loading="lazy"
                alt="Look, film shoot." data-label="Look" data-caption="A structure held at the waist, over a plain column dress.">
@@ -923,6 +927,8 @@ body.acc .chapter-mark{display:block}
                alt="Look, film shoot, in movement." data-label="Look" data-caption="The heavier cloth opening as the wearer moves.">
           <img class="plate-img" src="images/2016-joie/film_08.jpg" loading="lazy"
                alt="Look, film shoot." data-label="Look" data-caption="The splattered print carried open, away from the body.">
+          <img class="plate-img" src="images/2016-joie/film_10.jpg" loading="lazy"
+               alt="Look, film shoot, side." data-label="Look" data-caption="The black panel falling from the shoulder over the striped print beneath.">
         </div>
         <figcaption class="plate-note">
           <span class="plate-label">The looks</span>

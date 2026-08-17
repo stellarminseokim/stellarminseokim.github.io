@@ -392,6 +392,9 @@ a{color:inherit}
 }
 .look-main .plate-note{max-width:980px;margin-inline:auto}
 
+/* a film, not a loop: controls, and nothing loaded until asked for */
+.film{width:100%;background:var(--void);display:block}
+
 /* video */
 .loop{
   width:100%;
@@ -903,15 +906,45 @@ body.acc .chapter-mark{display:block}
       </figure>
 
       <figure class="plate rise">
-        <div class="row row-2">
-          <img class="plate-img" src="images/2016-joie/look_05_prints.jpg" loading="lazy"
-               alt="Two looks, two prints." data-label="Presentation" data-caption="Two of the prints as they read at a distance.">
-          <img class="plate-img" src="images/2016-joie/look_06_face.jpg" loading="lazy"
-               alt="The drawing carried onto the face." data-label="Presentation" data-caption="The same marks that became print, painted onto the face.">
+        <div class="row row-3">
+          <img class="plate-img" src="images/2016-joie/film_01.jpg" loading="lazy"
+               alt="Look, film shoot." data-label="Look" data-caption="A structure held at the waist, over a plain column dress.">
+          <img class="plate-img" src="images/2016-joie/film_02.jpg" loading="lazy"
+               alt="Look, film shoot." data-label="Look" data-caption="The outer piece cut into strips that hang free of the body.">
+          <img class="plate-img" src="images/2016-joie/film_03.jpg" loading="lazy"
+               alt="Look, film shoot." data-label="Look" data-caption="A printed panel folded around the shoulders.">
+          <img class="plate-img" src="images/2016-joie/film_04.jpg" loading="lazy"
+               alt="Look, film shoot." data-label="Look" data-caption="Print on the jersey beneath, structure held at the hip.">
+          <img class="plate-img" src="images/2016-joie/film_05.jpg" loading="lazy"
+               alt="Look, film shoot." data-label="Look" data-caption="The same piece opened out and carried.">
+          <img class="plate-img" src="images/2016-joie/film_06.jpg" loading="lazy"
+               alt="Look, film shoot." data-label="Look" data-caption="Print running from the jersey into the structure above it.">
+          <img class="plate-img" src="images/2016-joie/film_07.jpg" loading="lazy"
+               alt="Look, film shoot, in movement." data-label="Look" data-caption="The heavier cloth opening as the wearer moves.">
+          <img class="plate-img" src="images/2016-joie/film_08.jpg" loading="lazy"
+               alt="Look, film shoot." data-label="Look" data-caption="The splattered print carried open, away from the body.">
         </div>
         <figcaption class="plate-note">
-          <span class="plate-label">The drawing on the skin</span>
-          <p class="plate-caption">The make-up was drawn, not applied: the same marks that had become print were carried onto the face, so the gesture reached the body as well as the cloth.</p>
+          <span class="plate-label">The looks</span>
+          <p class="plate-caption">Photographed at the film shoot, one look at a time. Each outer piece is a rectangle drawn on, cut, and held by magnets to the dress beneath. The make-up was drawn the same way the prints were, so the gesture reached the face as well as the cloth.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="plate mid rise">
+        <img class="plate-img" src="images/2016-joie/film_09.jpg" loading="lazy"
+             alt="The striped print with the cut strips lifting away." data-label="Detail">
+        <figcaption class="plate-note">
+          <span class="plate-label">Closer</span>
+          <p class="plate-caption">The striped print with its cut strips lifting free — the print and the cut edge at the scale they were made.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="plate rise">
+        <video class="film" src="video/joie_film.mp4" controls preload="none"
+               poster="images/2016-joie/look_08_film.jpg"></video>
+        <figcaption class="plate-note">
+          <span class="plate-label">Film</span>
+          <p class="plate-caption">The same pieces filmed again, and directed differently. The Paris presentation was the joy itself; this is the way to it — difficulty worked through, and then left behind for somewhere better. That is what <em>joie de vivre</em> means to me: not the pleasure of a moment, but what is understood on the way out of one. Film by Studio Julius Thissen; hair and make-up by Vannessa Chan.</p>
         </figcaption>
       </figure>
 

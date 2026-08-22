@@ -243,6 +243,15 @@ a{color:inherit}
   line-height:1.66;
 }
 .statement p{margin:0 0 1.05em}
+.statement-lead{
+  font-family:var(--display);
+  font-weight:400;
+  font-size:clamp(1.5rem,3.4vw,2.5rem);
+  line-height:1.05;
+  letter-spacing:-.01em;
+  margin-bottom:1.4em;
+}
+.statement-lead strong{font-weight:400}
 .statement p:last-child{margin-bottom:0}
 
 .index{
@@ -434,10 +443,10 @@ a{color:inherit}
   gap:clamp(10px,1.4vw,20px);
   align-items:start;
 }
-/* Two columns everywhere, so a supporting frame reads at about 580px — the
-   same size the Joie de Vivre plates were already running at. Undefined
-   Shape carries six looks with three frames each, so it keeps three. */
-#yundefined .looks-row{grid-template-columns:repeat(3,minmax(0,1fr))}
+/* Two columns everywhere, so a supporting frame reads at about 580px. An
+   ID rule used to pin Undefined Shape to three — it also outranked the
+   media queries below, so that section stayed at three on a phone and its
+   photographs came out smaller than every other section. Removed. */
 .looks-row .plate-img{width:100%;cursor:zoom-in}
 /* one supporting frame on its own: centred and held in, not stranded in a third */
 .looks-row > .plate-img:only-child{grid-column:1/-1;max-width:580px;margin-inline:auto}
@@ -473,7 +482,7 @@ a{color:inherit}
 .look-main .plate-note{max-width:980px;margin-inline:auto}
 
 /* a film, not a loop: controls, and nothing loaded until asked for */
-.film{width:100%;max-width:900px;margin-inline:auto;background:var(--void);display:block}
+.film{width:100%;max-width:900px;margin-inline:auto;background:var(--void);display:block;aspect-ratio:16/9}
 .plate.closer > .plate-img{max-width:580px;margin-inline:auto}
 .plate.closer .plate-note{max-width:580px;margin-inline:auto}
 
@@ -481,6 +490,9 @@ a{color:inherit}
 .loop{
   width:100%;
   background:var(--paper-2);
+  /* reserve the box before the clip loads, so nothing shifts */
+  aspect-ratio:16/9;
+  object-fit:cover;
 }
 .loops{
   display:grid;
@@ -766,9 +778,9 @@ body.acc .chapter-mark{display:block}
       <p class="role">Concept-Led Designer-Researcher · Responsive Matter</p>
 
       <div class="statement">
-        <p>I study forms that respond to a person and transform. In the beginning I was drawn to building — raising bold three-dimensional structures the way an architect raises a building. Then, in London, I encountered a structure that transformed, and something shifted: I saw that form could return, that it could move between the flat and the volumetric.</p>
-        <p>Since then, that reversibility has run through everything I make. I followed it from the hand to textiles, and on to structures that meet the body and matter that responds to it — teaching myself the language of engineering whenever the technology I needed did not yet exist.</p>
-        <p>This portfolio traces that path, from the first forms I built by hand to matter that answers a person. I have come to call the direction <strong>Sentient Aesthetics</strong>.</p>
+        <p class="statement-lead"><strong>Materials that sense.<br>Forms that transform.<br>Experiences that matter.</strong></p>
+        <p>I design forms that respond to a person and transform, and I study what that transformation does to the person who meets it. The work has moved from the hand to textiles, and on to matter that answers a body.</p>
+        <p>I call the direction <strong>Sentient Aesthetics</strong>.</p>
       </div>
 
       <nav class="index" aria-label="Contents">
@@ -821,11 +833,11 @@ body.acc .chapter-mark{display:block}
       
 
       <figure class="plate rise">
-        <img decoding="async" fetchpriority="high" class="plate-img" src="images/2007-parsons/parsons_01_draping.jpg"
+        <img width="2000" height="1155" decoding="async" fetchpriority="high" class="plate-img" src="images/2007-parsons/parsons_01_draping.jpg"
              alt="Draping studies on the dress form: a length of cloth worked into volume, shown as a full silhouette and as a grid of close variations.">
         <figcaption class="plate-note">
           <span class="plate-label">Draping · 2007—2009</span>
-          <p class="plate-caption">A single length of cloth worked over the stand until a volume stood on its own. The silhouettes came quickly, straight from the hand — but I did not want to stay with what was merely beautiful, and everything that follows is the search for what would hold the shape instead.</p>
+          <p class="plate-caption">A single length of cloth worked over the stand until a volume stood on its own — the silhouettes came freely, straight from the hand.</p>
         </figcaption>
       </figure>
     </div>
@@ -838,82 +850,80 @@ body.acc .chapter-mark{display:block}
 
       <div class="chapter-head rise">
         <h2 class="chapter-title">Guggenheim</h2>
-        <p class="chapter-meta"><span class="chapter-year">2010</span><span class="sep">·</span>Parsons School of Design</p>
+        <p class="chapter-meta"><span class="chapter-year">2010</span><span class="sep">·</span>Parsons, New York</p>
       </div>
 
       <div class="chapter-text rise">
-        <p>In a collection inspired by the <em>Guggenheim</em>, I worked from its indefinable beauty — clean and modern, yet holding intricate detail — and let its organic layering become the layered fronts of the garments. Here I also began making material my own way, stitching rubber tubing into every seam, setting organza between layers of cashmere so a coat could be worn reversed.</p>
+        <p>A collection built from the Guggenheim's organic layering — clean and modern, yet holding intricate detail. It was also where I began making material my own way: rubber tubing stitched into every seam, organza set between layers of cashmere so a coat could be worn reversed.</p>
       </div>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2007-parsons/guggenheim_01_development.jpg" loading="lazy" decoding="async"
+        <img width="1546" height="1017" class="plate-img" src="images/2007-parsons/guggenheim_01_development.jpg" loading="lazy" decoding="async"
              alt="Design development for the Guggenheim collection: figure drawings, flat drawings, colour and fabric swatches, worked against photographs of the building.">
         <figcaption class="plate-note">
           <span class="plate-label">Design development</span>
-          <p class="plate-caption">The building's layered spiral drawn back onto the figure, then resolved as flats — where the layers fall, how each one is joined, and what fabric each is made in.</p>
         </figcaption>
       </figure>
 
       <figure class="plate looks rise">
-        <img class="plate-img look-main-img" src="images/2007-parsons/guggenheim_look1_main.jpg" loading="lazy" decoding="async"
+        <img width="1800" height="2291" class="plate-img look-main-img" src="images/2007-parsons/guggenheim_look1_main.jpg" loading="lazy" decoding="async"
              alt="Ivory cashmere coat dress, front." data-label="Look one">
         <div class="row looks-row">
-          <img class="plate-img" src="images/2007-parsons/guggenheim_look1_b.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2291" class="plate-img" src="images/2007-parsons/guggenheim_look1_b.jpg" loading="lazy" decoding="async"
              alt="Ivory cashmere coat dress, side." data-label="Look one">
         </div>
         <figcaption class="plate-note">
-          <span class="plate-label">Look one</span>
-          <p class="plate-caption">The signature look, in ivory cashmere. The layers falling across the front carry the organic layering of the building into the garment.</p>
+          <span class="plate-label">Look one · coat dress</span>
         </figcaption>
       </figure>
 
       <figure class="plate looks rise">
         <div class="row looks-row">
-          <img class="plate-img" src="images/2007-parsons/guggenheim_look2_tubing_a.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2291" class="plate-img" src="images/2007-parsons/guggenheim_look2_tubing_a.jpg" loading="lazy" decoding="async"
                alt="Bolero built from rubber tubing stitched into every seam, worn over an ivory knit top, back view."
                data-label="Look two · rubber tubing"
               >
-          <img class="plate-img" src="images/2007-parsons/guggenheim_look2_tubing_b.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2293" class="plate-img" src="images/2007-parsons/guggenheim_look2_tubing_b.jpg" loading="lazy" decoding="async"
                alt="Close detail of the rubber-tubing bolero at the shoulder."
                data-label="Look two · rubber tubing"
               >
-          <img class="plate-img" src="images/2007-parsons/guggenheim_look2_organza_a.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2291" class="plate-img" src="images/2007-parsons/guggenheim_look2_organza_a.jpg" loading="lazy" decoding="async"
                alt="Bolero of cashmere with organza set into every seam, front view."
                data-label="Look two · organza"
               >
-          <img class="plate-img" src="images/2007-parsons/guggenheim_look2_organza_b.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2291" class="plate-img" src="images/2007-parsons/guggenheim_look2_organza_b.jpg" loading="lazy" decoding="async"
                alt="The organza bolero seen from the back, the raw organza edges standing out from the seams."
                data-label="Look two · organza"
               >
         </div>
         <figcaption class="plate-note">
           <span class="plate-label">Look two</span>
-          <p class="plate-caption">Rubber tubing stitched together with jersey in every seam. The material is not decoration laid on top — it is what gives the piece its structure, and it comes from outside clothing entirely. The same bolero in a second version: cashmere with grey and sand organza set between the seams so the raw edges face outward. Made this way, the piece can be worn reversed.</p>
+          <p class="plate-caption">Rubber tubing stitched together with jersey in every seam: not decoration laid on top, but what gives the piece its structure. In the second version, organza is set between the seams with the raw edges facing outward, so the piece can be worn reversed.</p>
         </figcaption>
       </figure>
 
       <figure class="plate looks rise">
         <div class="row looks-row">
-          <img class="plate-img" src="images/2007-parsons/guggenheim_look3_a.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2291" class="plate-img" src="images/2007-parsons/guggenheim_look3_a.jpg" loading="lazy" decoding="async"
                alt="Rayon jersey dress, front, with rubber string stitched into the hem."
                data-label="Look three"
               >
-          <img class="plate-img" src="images/2007-parsons/guggenheim_look3_b.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2291" class="plate-img" src="images/2007-parsons/guggenheim_look3_b.jpg" loading="lazy" decoding="async"
                alt="The same dress from the back, scooped deeply open."
                data-label="Look three"
               >
-          <img class="plate-img" src="images/2007-parsons/guggenheim_look3_c.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2291" class="plate-img" src="images/2007-parsons/guggenheim_look3_c.jpg" loading="lazy" decoding="async"
                alt="The jersey dress worn under a navy silk top, front."
                data-label="Look three · with silk top"
               >
-          <img class="plate-img" src="images/2007-parsons/guggenheim_look3_d.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2291" class="plate-img" src="images/2007-parsons/guggenheim_look3_d.jpg" loading="lazy" decoding="async"
                alt="The same pairing from the back, both pieces open across the back."
                data-label="Look three · with silk top"
               >
         </div>
         <figcaption class="plate-note">
-          <span class="plate-label">Look three</span>
-          <p class="plate-caption">Front and back read as two different garments. The front is clean, with rubber string stitched into the jersey at the hem; the back is scooped deeply open.</p>
+          <span class="plate-label">Look three · jersey dress</span>
+          <p class="plate-caption">Front and back read as two different garments: one clean, the other scooped deeply open.</p>
         </figcaption>
       </figure>
 
@@ -928,121 +938,118 @@ body.acc .chapter-mark{display:block}
 
       <div class="chapter-head rise">
         <h2 class="chapter-title">Undefined Shape and Refined Structure</h2>
-        <p class="chapter-meta"><span class="chapter-year">2011</span><span class="sep">·</span>Graduation Collection · Parsons</p>
+        <p class="chapter-meta"><span class="chapter-year">2011</span><span class="sep">·</span>Graduation Collection · Parsons, New York</p>
       </div>
 
       <div class="chapter-text rise">
-        <p>My graduation collection turned to Metabolism, the Japanese architectural movement that sought to give buildings a sense of dynamism and movement, almost like a living body. Working in the colours of concrete, glass, stone and steel, I used the geometry of those materials to explore movement within architectural structure — no longer intuitive draping, but structure designed into the pattern itself, with stiff material fused inside the fabric to hold a form.</p>
-        <p>The aim was an extreme architectural structure that still respects the human form. What drew me was never prettiness. It was structure — and, already then, structure that moves.</p>
+        <p>A geometric exploration of three-dimensional form, questioning the relation between an undefined silhouette and a precise internal structure. Taking Metabolism — architecture conceived as something that grows and changes — the collection asks how structural logic can inhabit unexpected shapes, and how movement can be held inside a fixed form.</p>
       </div>
 
       <figure class="plate mid rise">
-        <img class="plate-img" src="images/2007-parsons/undefined_01_reference.jpg" loading="lazy" decoding="async"
+        <img width="1231" height="1582" class="plate-img" src="images/2007-parsons/undefined_01_reference.jpg" loading="lazy" decoding="async"
              alt="Reference images of Metabolist architecture: sectional models of stacked, wave-edged floor plates, and a built facade.">
         <figcaption class="plate-note">
           <span class="plate-label">Reference — not my own work</span>
-          <p class="plate-caption">Metabolist architecture: floor plates stacked and offset so a building reads as something growing rather than something set down. What I took was not the look but the principle — that a structure can hold movement inside a fixed form.</p>
+          <p class="plate-caption">Metabolist architecture: floor plates stacked and offset so a building reads as something growing. What I took was the principle, not the look.</p>
         </figcaption>
       </figure>
 
       <figure class="plate mid rise">
-        <img class="plate-img" src="images/2007-parsons/undefined_02_paper.jpg" loading="lazy" decoding="async"
+        <img width="1760" height="2376" class="plate-img" src="images/2007-parsons/undefined_02_paper.jpg" loading="lazy" decoding="async"
              alt="Paper draped and folded on the dress form, photographed as a grid of variations around a central full view.">
         <figcaption class="plate-note">
           <span class="plate-label">Paper draping</span>
-          <p class="plate-caption">Developed from paper worked directly on the stand — not the large volumes of later work, but the way lines on a building's surface weave in and out of the plane. Metabolism is a concept about buildings that change, and transform was one of the words I was working from at the time. Paper holds an edge where cloth softens it, so each fold could be judged as structure before any fabric was chosen.</p>
+          <p class="plate-caption">Paper holds an edge where cloth softens it, so each fold could be judged as structure before any fabric was chosen. <em>Transform</em> was one of the words I was working from at the time.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2007-parsons/undefined_03_development_a.jpg" loading="lazy" decoding="async"
+        <img width="1362" height="1155" class="plate-img" src="images/2007-parsons/undefined_03_development_a.jpg" loading="lazy" decoding="async"
              alt="Design development sheets: sketches, pattern drafts, toile fittings and fabric swatches for the first looks.">
         <figcaption class="plate-note">
           <span class="plate-label">Design development I</span>
-          <p class="plate-caption">Each look carried from sketch to pattern draft to toile and back — the structure drawn into the pattern rather than laid on afterwards, so the shape a garment takes is decided flat, before it is cut. The first sheet still carries the words I wrote at the time: flexibility, transform, moving between two dimensions and three. The question was already open here. Cutting was what I had to answer it with; the mechanism came later.</p>
+          <p class="plate-caption">The first sheet still carries the words I wrote then: flexibility, transform, moving between two dimensions and three. The question was already open here.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2007-parsons/undefined_04_development_b.jpg" loading="lazy" decoding="async"
+        <img width="1358" height="1158" class="plate-img" src="images/2007-parsons/undefined_04_development_b.jpg" loading="lazy" decoding="async"
              alt="Design development sheets for the later looks: trouser drafts, spiral seaming and the folded panel of the final piece.">
         <figcaption class="plate-note">
           <span class="plate-label">Design development II</span>
-          <p class="plate-caption">The later looks, where the structure grows more extreme: spiral seaming worked out on the stand, and the folded panel of the final piece resolved as a flat pattern first.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2007-parsons/undefined_05_lineup.jpg" loading="lazy" decoding="async"
+        <img width="2000" height="1296" class="plate-img" src="images/2007-parsons/undefined_05_lineup.jpg" loading="lazy" decoding="async"
              alt="Collection line-up: six figures drawn in the colours of concrete, glass, stone and steel.">
         <figcaption class="plate-note">
           <span class="plate-label">Line-up</span>
-          <p class="plate-caption">Six looks, in the colours of the materials they came from — concrete, glass, stone and steel.</p>
+          <p class="plate-caption">Six looks, in the colours of the materials they came from: concrete, glass, stone and steel.</p>
         </figcaption>
       </figure>
 
       <figure class="plate looks rise">
-        <img class="plate-img look-main-img" src="images/2007-parsons/undefined_look1_main.jpg" loading="lazy" decoding="async"
+        <img width="792" height="1008" class="plate-img look-main-img" src="images/2007-parsons/undefined_look1_main.jpg" loading="lazy" decoding="async"
              alt="Cream cashmere tunic with angular panels, worn over satin trousers." data-label="Look one">
         <div class="row looks-row">
-          <img class="plate-img" src="images/2007-parsons/undefined_look1_b.jpg" loading="lazy" decoding="async"
+          <img width="792" height="1008" class="plate-img" src="images/2007-parsons/undefined_look1_b.jpg" loading="lazy" decoding="async"
              alt="The same cashmere piece seen from the side, showing the woven strip closure." data-label="Look one">
         </div>
         <figcaption class="plate-note">
-          <span class="plate-label">Look one</span>
-          <p class="plate-caption">A reversible cashmere coat, closed by a woven strip drawn from Japanese architectural joinery. The panels are not applied to the surface — they are the way the garment is constructed, and they hold the form open away from the body.</p>
+          <span class="plate-label">Look one · reversible</span>
+          <p class="plate-caption">A reversible cashmere coat, closed by a woven strip drawn from Japanese architectural joinery.</p>
         </figcaption>
       </figure>
 
       <figure class="plate looks rise">
         <div class="row looks-row">
-          <img class="plate-img" src="images/2007-parsons/undefined_look2_a.jpg" loading="lazy" decoding="async"
+          <img width="792" height="1008" class="plate-img" src="images/2007-parsons/undefined_look2_a.jpg" loading="lazy" decoding="async"
                alt="Silk and wool satin blouse with a standing shoulder panel, worn with an asymmetric skirt."
                data-label="Look two"
               >
-          <img class="plate-img" src="images/2007-parsons/undefined_look2_b.jpg" loading="lazy" decoding="async"
+          <img width="792" height="1008" class="plate-img" src="images/2007-parsons/undefined_look2_b.jpg" loading="lazy" decoding="async"
                alt="The same look from the back, the shoulder panel standing clear."
                data-label="Look two"
               >
-          <img class="plate-img" src="images/2007-parsons/undefined_look2_c.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2115" class="plate-img" src="images/2007-parsons/undefined_look2_c.jpg" loading="lazy" decoding="async"
                alt="Close detail of the shoulder, showing the folded seam that holds the panel upright."
                data-label="Look two"
               >
         </div>
         <figcaption class="plate-note">
           <span class="plate-label">Look two · standing shoulder</span>
-          <p class="plate-caption">The shoulder holds its own line: the structure is in the fold and the seam, not in anything added underneath.</p>
+          <p class="plate-caption">The structure is in the fold and the seam, not in anything added underneath.</p>
         </figcaption>
       </figure>
 
       <figure class="plate looks rise">
         <div class="row looks-row">
-          <img class="plate-img" src="images/2007-parsons/undefined_look3_a.jpg" loading="lazy" decoding="async"
+          <img width="792" height="1008" class="plate-img" src="images/2007-parsons/undefined_look3_a.jpg" loading="lazy" decoding="async"
                alt="Silk garza asymmetric top worn with grey satin trousers carrying an exaggerated structure at the hip."
                data-label="Look three"
               >
-          <img class="plate-img" src="images/2007-parsons/undefined_look3_b.jpg" loading="lazy" decoding="async"
+          <img width="792" height="1008" class="plate-img" src="images/2007-parsons/undefined_look3_b.jpg" loading="lazy" decoding="async"
                alt="The same look from the side, the hip structure standing away from the leg."
                data-label="Look three"
               >
         </div>
         <figcaption class="plate-note">
-          <span class="plate-label">Look three · projected volume</span>
-          <p class="plate-caption">An exaggerated structure projecting from the front hip line in silk and wool satin. The volume is cut into the trouser pattern rather than layered over it.</p>
+          <span class="plate-label">Look three</span>
         </figcaption>
       </figure>
 
       <figure class="plate looks rise">
         <div class="row looks-row">
-          <img class="plate-img" src="images/2007-parsons/undefined_look4_a.jpg" loading="lazy" decoding="async"
+          <img width="792" height="1008" class="plate-img" src="images/2007-parsons/undefined_look4_a.jpg" loading="lazy" decoding="async"
                alt="Architectural short dress in cashmere and double-faced satin, the satin running as a curve across the body."
                data-label="Look four"
               >
-          <img class="plate-img" src="images/2007-parsons/undefined_look4_b.jpg" loading="lazy" decoding="async"
+          <img width="792" height="1008" class="plate-img" src="images/2007-parsons/undefined_look4_b.jpg" loading="lazy" decoding="async"
                alt="The same dress from another angle, the shoulder rising into a point."
                data-label="Look four"
               >
-          <img class="plate-img" src="images/2007-parsons/undefined_look4_c.jpg" loading="lazy" decoding="async"
+          <img width="792" height="1008" class="plate-img" src="images/2007-parsons/undefined_look4_c.jpg" loading="lazy" decoding="async"
                alt="The dress from the side, the woven strip detail visible at the back."
                data-label="Look four"
               >
@@ -1054,35 +1061,35 @@ body.acc .chapter-mark{display:block}
 
       <figure class="plate looks rise">
         <div class="row looks-row">
-          <img class="plate-img" src="images/2007-parsons/undefined_look5_a.jpg" loading="lazy" decoding="async"
+          <img width="791" height="1008" class="plate-img" src="images/2007-parsons/undefined_look5_a.jpg" loading="lazy" decoding="async"
                alt="Long skirt with spiral seams in wool and silk, worn with a draped silk garza top."
                data-label="Look five"
               >
-          <img class="plate-img" src="images/2007-parsons/undefined_look5_b.jpg" loading="lazy" decoding="async"
+          <img width="792" height="1008" class="plate-img" src="images/2007-parsons/undefined_look5_b.jpg" loading="lazy" decoding="async"
                alt="Close view of the draped silk garza top at the shoulder."
                data-label="Look five"
               >
         </div>
         <figcaption class="plate-note">
           <span class="plate-label">Look five · spiral seams</span>
-          <p class="plate-caption">The long skirt is seamed in a spiral through different wool and silk fabrics and pin-tucked at each seam to create an angular hem. Above it, a draped silk garza top — the one place in the collection where the shape is found by hand rather than drafted.</p>
+          <p class="plate-caption">Seamed in a spiral and pin-tucked at each seam to force an angular hem, under a draped silk garza top.</p>
         </figcaption>
       </figure>
 
       <figure class="plate looks rise">
         <div class="row looks-row">
-          <img class="plate-img" src="images/2007-parsons/undefined_look6_a.jpg" loading="lazy" decoding="async"
+          <img width="792" height="1008" class="plate-img" src="images/2007-parsons/undefined_look6_a.jpg" loading="lazy" decoding="async"
                alt="Full-length grey gown with a large folded panel across the shoulder and a quilted section at the waist."
                data-label="Look six · signature piece"
               >
-          <img class="plate-img" src="images/2007-parsons/undefined_look6_b.jpg" loading="lazy" decoding="async"
+          <img width="792" height="1008" class="plate-img" src="images/2007-parsons/undefined_look6_b.jpg" loading="lazy" decoding="async"
                alt="Close view of the folded shoulder panel and the quilted satin at the waist."
                data-label="Look six · signature piece"
               >
         </div>
         <figcaption class="plate-note">
           <span class="plate-label">Look six · signature piece</span>
-          <p class="plate-caption">The piece the collection was built toward: an extreme architectural structure that still respects the human form. Wool faced with satin, folded back on itself and held by the seam, with a quilted section closing the waist.</p>
+          <p class="plate-caption">The piece the collection was built toward: an extreme architectural structure that still respects the human form.</p>
         </figcaption>
       </figure>
 
@@ -1098,63 +1105,62 @@ body.acc .chapter-mark{display:block}
 
       <div class="chapter-head rise">
         <h2 class="chapter-title">Cutting</h2>
-        <p class="chapter-meta"><span class="chapter-year">2013</span><span class="sep">·</span>Central Saint Martins</p>
+        <p class="chapter-meta"><span class="chapter-year">2013</span><span class="sep">·</span>Central Saint Martins, London</p>
       </div>
 
       <div class="chapter-text rise">
-        <p>In <em>Cutting</em> the method changed. The collection was built by cutting — pieces cut and stitched together so that the assembly itself makes the structure, rather than shaping cloth over the body. Alongside that, I developed the looks through folding. I worked the whole collection in felt, which takes a fold and keeps it.</p>
+        <p>Sheet material bent into volume and holding it with nothing inside — no frame, no armature, only the way the sheet is bent. The collection asks how to do that in cloth: pieces cut and stitched so the assembly itself makes the structure, with folding worked into the method.</p>
       </div>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2013-csm/cutting_01_reference.jpg" loading="lazy" decoding="async"
+        <img width="1123" height="1400" class="plate-img" src="images/2013-csm/cutting_01_reference.jpg" loading="lazy" decoding="async"
              alt="Reference board: metal-clad architecture by Frank Gehry and curved steel plate sculpture by Richard Serra.">
         <figcaption class="plate-note">
           <span class="plate-label">Inspiration — not my own work</span>
-          <p class="plate-caption">Frank Gehry's metal-clad architecture and Richard Serra's curved steel. Sheet material bent into volume and holding that volume with nothing inside it — no frame, no armature, only the way the sheet is bent. The question I set the collection was how to do that in cloth.</p>
+          <p class="plate-caption">Frank Gehry's metal-clad architecture and Richard Serra's curved steel.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2013-csm/cutting_02_experiment.jpg" loading="lazy" decoding="async"
+        <img width="2400" height="1536" class="plate-img" src="images/2013-csm/cutting_02_experiment.jpg" loading="lazy" decoding="async"
              alt="Fold experiments: felt squares slashed and folded, worked on the dress form, and carried into a first test garment.">
         <figcaption class="plate-note">
           <span class="plate-label">Fold experiments</span>
-          <p class="plate-caption">Cut pieces joined so the assembly makes the structure, with folding worked into the method — flat pieces slashed and folded, then tested on the stand until the fold itself stood. Each study was set, photographed and reopened; what mattered was not the shape reached but which cut allowed the fold to hold.</p>
+          <p class="plate-caption">Each study set, photographed and reopened. What mattered was not the shape reached but which cut allowed the fold to hold.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2013-csm/cutting_03_development.jpg" loading="lazy" decoding="async"
+        <img width="2400" height="2988" class="plate-img" src="images/2013-csm/cutting_03_development.jpg" loading="lazy" decoding="async"
              alt="Rough drawings of folded structures on the figure, with pattern measurements, first muslin draping, first toile and final toile.">
         <figcaption class="plate-note">
           <span class="plate-label">Drawing and toile</span>
-          <p class="plate-caption">Each fold drawn back onto the figure to test where it could sit, then measured into a pattern and made up — first in muslin, then in the final cloth.</p>
         </figcaption>
       </figure>
 
       <figure class="plate looks rise">
-        <img class="plate-img look-main-img" src="images/2013-csm/cutting_look1_main.jpg" loading="lazy" decoding="async"
+        <img width="1800" height="2700" class="plate-img look-main-img" src="images/2013-csm/cutting_look1_main.jpg" loading="lazy" decoding="async"
              alt="Final look, Cutting: black felt dress, front." data-label="Final look">
         <div class="row looks-row">
-          <img class="plate-img" src="images/2013-csm/cutting_look1_a.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2700" class="plate-img" src="images/2013-csm/cutting_look1_a.jpg" loading="lazy" decoding="async"
                alt="Final look, front, full length." data-label="Final look"
               >
-          <img class="plate-img" src="images/2013-csm/cutting_look1_b.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2700" class="plate-img" src="images/2013-csm/cutting_look1_b.jpg" loading="lazy" decoding="async"
                alt="Final look, front three-quarter." data-label="Final look"
               >
-          <img class="plate-img" src="images/2013-csm/cutting_look1_c.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2700" class="plate-img" src="images/2013-csm/cutting_look1_c.jpg" loading="lazy" decoding="async"
                alt="Final look, shoulder and front detail." data-label="Final look"
               >
-          <img class="plate-img" src="images/2013-csm/cutting_look1_d.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2700" class="plate-img" src="images/2013-csm/cutting_look1_d.jpg" loading="lazy" decoding="async"
                alt="Final look, back, full length." data-label="Final look"
               >
-          <img class="plate-img" src="images/2013-csm/cutting_look1_e.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2700" class="plate-img" src="images/2013-csm/cutting_look1_e.jpg" loading="lazy" decoding="async"
                alt="Final look, back, showing the jersey panel set into the cut-away back." data-label="Final look"
               >
         </div>
         <figcaption class="plate-note">
           <span class="plate-label">Final look</span>
-          <p class="plate-caption">Felt, unlined. The panels are folded rather than seamed into shape, so what holds the volume is the fold itself — sheet material standing by the way it is bent, with nothing inside it. Every edge is a cut edge. Felt does not fray, so nothing needed hemming or facing, and the folded structure could stay as thin as a single layer. The back is cut open and seamed to jersey — the only place where a second cloth appears. Felt stands away from the body; jersey follows it. The two meet here.</p>
+          <p class="plate-caption">Felt throughout, because felt takes a fold and keeps it. Unlined, and every edge a cut edge. The back is cut open and seamed to jersey: felt stands away from the body; jersey follows it.</p>
         </figcaption>
       </figure>
 
@@ -1167,68 +1173,65 @@ body.acc .chapter-mark{display:block}
 
       <div class="chapter-head rise">
         <h2 class="chapter-title">Muse</h2>
-        <p class="chapter-meta"><span class="chapter-year">2014</span><span class="sep">·</span>Central Saint Martins</p>
+        <p class="chapter-meta"><span class="chapter-year">2014</span><span class="sep">·</span>Central Saint Martins, London</p>
       </div>
 
       <div class="chapter-text rise">
-        <p><em>Muse</em> began with a person. The brief was to choose one woman and design for her, and I chose Daphne Guinness — fashionable and refined, but strong and independent with it. Someone like that would not want a garment that was only beautiful; she wears bold metal herself, and I read that as a taste for something with an edge to it. So I went to ironmongers looking for fittings strong enough to sit on a garment as detail. What had drawn me to architecture in the first place — the way many different materials and structures resolve into a single form — became the raw material of my own work.</p>
+        <p>Designing for one woman. I chose Daphne Guinness — refined but unmistakably strong, someone who wears bold metal — and answered her with material that belongs to building rather than to dress.</p>
       </div>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2013-csm/muse_01_muse.jpg" loading="lazy" decoding="async"
+        <img width="2400" height="2988" class="plate-img" src="images/2013-csm/muse_01_muse.jpg" loading="lazy" decoding="async"
              alt="Reference board of photographs of Daphne Guinness, gathered as the starting point for the project.">
         <figcaption class="plate-note">
           <span class="plate-label">Inspiration — not my own work</span>
-          <p class="plate-caption">Daphne Guinness, the muse I chose for the project. Photographs by others, gathered to fix who I was designing for — a figure that reads as constructed rather than soft, and that could carry metal on the shoulder.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2013-csm/muse_02_hardware.jpg" loading="lazy" decoding="async"
+        <img width="2400" height="2988" class="plate-img" src="images/2013-csm/muse_02_hardware.jpg" loading="lazy" decoding="async"
              alt="Hardware studies: wire rope, clamps, eye bolts and tensioning fittings tested directly on the dress form, shown with the building systems they belong to.">
         <figcaption class="plate-note">
           <span class="plate-label">Hardware studies</span>
-          <p class="plate-caption">Wire rope and clamps, eye bolts, rings and tensioning fittings, bought from London ironmongers and taken straight to the stand. What interested me was the mechanism inside each part — a hinge, a spring, a screw thread — and what it could become once it sat on cloth instead of on a building. From these studies came the shoulder and neck details of the final dress.</p>
+          <p class="plate-caption">Wire rope and clamps, eye bolts, rings and tensioning fittings from London ironmongers. What interested me was the mechanism inside each part, and what it becomes once it sits on cloth instead of on a building.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2013-csm/muse_03_sketch.jpg" loading="lazy" decoding="async"
+        <img width="2400" height="2988" class="plate-img" src="images/2013-csm/muse_03_sketch.jpg" loading="lazy" decoding="async"
              alt="Rough drawings placing hardware fittings on the figure, with flats, line-up and fabric swatches.">
         <figcaption class="plate-note">
           <span class="plate-label">Drawing and line-up</span>
-          <p class="plate-caption">Every fitting drawn onto the figure to find where it could sit and what it could take. The collection resolved as flats, each look drawn against the cloth it would be made in.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2013-csm/muse_04_development.jpg" loading="lazy" decoding="async"
+        <img width="2400" height="1566" class="plate-img" src="images/2013-csm/muse_04_development.jpg" loading="lazy" decoding="async"
              alt="Design development from calico toile to the final cotton garment, with model fitting.">
         <figcaption class="plate-note">
           <span class="plate-label">Design development</span>
-          <p class="plate-caption">Toile in muslin, then the garment in cotton, with the shoulder fittings placed last. Of everything bought and tested, these were the ones that answered this look — chosen at the end of the process rather than assumed at the start of it.</p>
         </figcaption>
       </figure>
 
       <figure class="plate looks rise">
-        <img class="plate-img look-main-img" src="images/2013-csm/muse_look1_main.jpg" loading="lazy" decoding="async"
+        <img width="1800" height="2699" class="plate-img look-main-img" src="images/2013-csm/muse_look1_main.jpg" loading="lazy" decoding="async"
              alt="Final look, Muse: black cotton dress with metal fittings at the shoulder." data-label="Final look">
         <div class="row looks-row">
-          <img class="plate-img" src="images/2013-csm/muse_look1_a.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2700" class="plate-img" src="images/2013-csm/muse_look1_a.jpg" loading="lazy" decoding="async"
                alt="Final look, side, full length with train." data-label="Final look"
               >
-          <img class="plate-img" src="images/2013-csm/muse_look1_b.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2700" class="plate-img" src="images/2013-csm/muse_look1_b.jpg" loading="lazy" decoding="async"
                alt="Final look, back." data-label="Final look"
               >
-          <img class="plate-img" src="images/2013-csm/muse_look1_c.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2700" class="plate-img" src="images/2013-csm/muse_look1_c.jpg" loading="lazy" decoding="async"
                alt="Final look, side profile, showing the shoulder fittings." data-label="Final look"
               >
-          <img class="plate-img" src="images/2013-csm/muse_look1_d.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2700" class="plate-img" src="images/2013-csm/muse_look1_d.jpg" loading="lazy" decoding="async"
              alt="Final look, front, full length." data-label="Final look">
         </div>
         <figcaption class="plate-note">
           <span class="plate-label">Final look</span>
-          <p class="plate-caption">Cotton, with the folded panel gathered at the shoulder. The drape came from working on the stand — I found the structure there, drew it, and designed from that. Front and back are joined by a metal closure, with a larger fitting set into the join. Both were bought from ironmongers; I wanted metal bold enough to carry a strong gesture, because that is what the muse required.</p>
+          <p class="plate-caption">The drape was found on the stand, drawn, and designed from there. Front and back are joined by a metal closure, with a larger fitting set into the join.</p>
         </figcaption>
       </figure>
 
@@ -1243,92 +1246,89 @@ body.acc .chapter-mark{display:block}
 
       <div class="chapter-head rise">
         <h2 class="chapter-title">Movement in Space</h2>
-        <p class="chapter-meta"><span class="chapter-year">2014</span><span class="sep">·</span>Graduation Project · Central Saint Martins</p>
+        <p class="chapter-meta"><span class="chapter-year">2014</span><span class="sep">·</span>Graduation Project · Central Saint Martins, London</p>
       </div>
 
       <div class="chapter-text rise">
-        <p>In the CSM library I came across an image of a transforming metal structure in a book, and something changed. Until then I had been absorbed in raising volume; now I was seized by the idea that form could return — that it could move between the flat and the volumetric.</p>
-        <p>A flat structure rises into volume when drawn by strings, and the whole panel attaches to a plain dress with magnets. Without the panel, the dress is simple. Attached, it becomes something else entirely. The strings are not fixed: the wearer draws them until the structure takes the shape they want. The form is set by the person wearing it. Detachable, reversible, and structural: this was the first time the mechanism that now runs through all my work took shape.</p>
+        <p>A structure that opens and closes, and a garment that exists in more than one state. A flat panel rises into volume when drawn by strings and attaches to a plain dress with magnets — released, the dress is simple again. How far the strings are drawn is left to the wearer, so the form is set by the person inside it.</p>
       </div>
 
       <figure class="plate rise">
-        <img decoding="async" class="plate-img" src="images/2014-movement/movement_01_source.jpg"
+        <img width="1981" height="794" decoding="async" class="plate-img" src="images/2014-movement/movement_01_source.jpg"
              alt="The transforming metal structure found in a book in the Central Saint Martins library.">
         <figcaption class="plate-note">
           <span class="plate-label">Inspiration</span>
-          <p class="plate-caption">The transforming structure I found in a book in the CSM library, opening across three stages. This is where the project began.</p>
+          <p class="plate-caption">A transforming structure found in a book in the CSM library, opening across three stages. This is where the project began.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2014-movement/movement_02_experiments.jpg" loading="lazy" decoding="async"
+        <img width="1464" height="1074" class="plate-img" src="images/2014-movement/movement_02_experiments.jpg" loading="lazy" decoding="async"
              alt="Geometry from a mathematics book rebuilt in paper and moved to test how it transforms.">
         <figcaption class="plate-note">
           <span class="plate-label">Structure experiments</span>
-          <p class="plate-caption">Geometry from a mathematics book, read not as formula but as mechanism — I took what the images suggested about how something transforms, interpreted it my own way, and rebuilt it in paper. Silhouette and the details of the mechanism were developed here.</p>
+          <p class="plate-caption">Geometry from a mathematics book, read not as formula but as mechanism, and rebuilt in paper.</p>
         </figcaption>
       </figure>
 
       <figure class="plate mid rise">
-        <img class="plate-img" src="images/2014-movement/movement_03_develop_sketch.jpg" loading="lazy" decoding="async"
+        <img width="1240" height="1269" class="plate-img" src="images/2014-movement/movement_03_develop_sketch.jpg" loading="lazy" decoding="async"
              alt="Design sketches worked against photographs of the paper studies.">
         <figcaption class="plate-note">
           <span class="plate-label">Design development</span>
-          <p class="plate-caption">Each structure drawn back onto the figure to test what it becomes as a garment — before and after the panel moves, marked on the same page.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2014-movement/movement_05_line_up.jpg" loading="lazy" decoding="async"
+        <img width="1860" height="846" class="plate-img" src="images/2014-movement/movement_05_line_up.jpg" loading="lazy" decoding="async"
              alt="Collection line-up: flat drawings of each look with fabric swatches.">
         <figcaption class="plate-note">
           <span class="plate-label">Line-up</span>
-          <p class="plate-caption">The collection resolved as flats, with the fabric for each part placed once the look was drawn.</p>
         </figcaption>
       </figure>
 
       <figure class="plate mid rise">
-        <img class="plate-img" src="images/2014-movement/movement_04_develop_garments.jpg" loading="lazy" decoding="async"
+        <img width="1393" height="1129" class="plate-img" src="images/2014-movement/movement_04_develop_garments.jpg" loading="lazy" decoding="async"
              alt="Toiles and garment development on the dress form.">
         <figcaption class="plate-note">
           <span class="plate-label">Garment development</span>
-          <p class="plate-caption">Two looks were made. The structural studies were first built in heavy board; for the garments, no textile I could find held those shapes, so I used sunscreen fabric, an architectural shading material — sold by the roll like cloth, but holding a crease the way paper does. Difficult to sew, but the only thing that behaved like the structure.</p>
+          <p class="plate-caption">No textile held the shapes the paper had made, so the garments were built in sunscreen fabric — an architectural shading material, sold by the roll but holding a crease the way paper does.</p>
         </figcaption>
       </figure>
 
       <figure class="plate looks rise">
-        <img class="plate-img look-main-img" src="images/2014-movement/look1_main.jpg" loading="lazy" decoding="async"
+        <img width="1800" height="2547" class="plate-img look-main-img" src="images/2014-movement/look1_main.jpg" loading="lazy" decoding="async"
              alt="Look one, Movement in Space." data-label="Look one">
         <div class="row looks-row">
-          <img class="plate-img" src="images/2014-movement/look1_front.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2546" class="plate-img" src="images/2014-movement/look1_front.jpg" loading="lazy" decoding="async"
                alt="Look one, front." data-label="Look one">
-          <img class="plate-img" src="images/2014-movement/look1_a.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2546" class="plate-img" src="images/2014-movement/look1_a.jpg" loading="lazy" decoding="async"
                alt="Look one, side." data-label="Look one">
-          <img class="plate-img" src="images/2014-movement/look1_b.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2546" class="plate-img" src="images/2014-movement/look1_b.jpg" loading="lazy" decoding="async"
                alt="Look one, three-quarter." data-label="Look one">
-          <img class="plate-img" src="images/2014-movement/look1_c.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2546" class="plate-img" src="images/2014-movement/look1_c.jpg" loading="lazy" decoding="async"
                alt="Look one, back." data-label="Look one">
         </div>
         <figcaption class="plate-note">
           <span class="plate-label">Look one</span>
-          <p class="plate-caption">A structural panel drawn by strings, carried across the front of a plain base dress. The front structure and the two pieces at the hem all attach with magnets; released, a plain long dress remains.</p>
+          <p class="plate-caption">The front structure and the two pieces at the hem all attach with magnets; released, a plain long dress remains.</p>
         </figcaption>
       </figure>
 
       <figure class="plate looks rise">
         <div class="row looks-row">
-          <img class="plate-img" src="images/2014-movement/look2_a.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2546" class="plate-img" src="images/2014-movement/look2_a.jpg" loading="lazy" decoding="async"
                alt="Look two, front." data-label="Look two">
-          <img class="plate-img" src="images/2014-movement/look2_b.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2546" class="plate-img" src="images/2014-movement/look2_b.jpg" loading="lazy" decoding="async"
                alt="Look two, side." data-label="Look two">
-          <img class="plate-img" src="images/2014-movement/look3_a.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2546" class="plate-img" src="images/2014-movement/look3_a.jpg" loading="lazy" decoding="async"
                alt="Look two, side." data-label="Look two">
-          <img class="plate-img" src="images/2014-movement/look3_b.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2546" class="plate-img" src="images/2014-movement/look3_b.jpg" loading="lazy" decoding="async"
                alt="Look two, back." data-label="Look two">
         </div>
         <figcaption class="plate-note">
           <span class="plate-label">Look two</span>
-          <p class="plate-caption">A different structure on the same principle: a front structure attaching to a plain base dress with magnets, with the fringe detachable from it as well. How far the strings are drawn decides the shape the structure takes.</p>
+          <p class="plate-caption">A different structure on the same principle, with the fringe detachable from it as well.</p>
         </figcaption>
       </figure>
 
@@ -1342,33 +1342,33 @@ body.acc .chapter-mark{display:block}
 
       <div class="chapter-head rise">
         <h2 class="chapter-title">Expressive</h2>
-        <p class="chapter-meta"><span class="chapter-year">2015</span><span class="sep">·</span>ArtEZ University of the Arts</p>
+        <p class="chapter-meta"><span class="chapter-year">2015</span><span class="sep">·</span>ArtEZ University of the Arts, Netherlands</p>
       </div>
 
       <div class="chapter-text rise">
-        <p>The brief was to work against my own design DNA. I listed what I disliked — check, punk, aggression, anything that felt oppressive — and then looked at each one long enough to find what was underneath it. Check has never appealed to me as a print, but taken apart, what makes a check is weaving, so I worked from the mechanism rather than the pattern. Aggression I set aside; what I kept was the boldness underneath it — a gesture released freely rather than one meant to overpower. I named the collection for that.</p>
+        <p>Working against my own design DNA: check, punk, aggression, anything that felt oppressive. Each one held to the light long enough to find what was underneath it — check is weaving before it is a pattern, and under aggression is boldness, a gesture released freely rather than one meant to overpower. The collection is named for that distinction.</p>
       </div>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2014-artez/expressive_01_reference_line.jpg" loading="lazy" decoding="async"
+        <img width="2400" height="1839" class="plate-img" src="images/2014-artez/expressive_01_reference_line.jpg" loading="lazy" decoding="async"
              alt="Reference board: tape and thread installations, line-based sculpture and architecture.">
         <figcaption class="plate-note">
           <span class="plate-label">Inspiration — not my own work</span>
-          <p class="plate-caption">Monika Grzymala's tape installations, with line-based sculpture alongside. What holds me here is not aggression but boldness — line released at full force, a gesture that declares itself freely rather than one that means to subdue. Aggression seeks to overpower; this seizes you. They are not the same thing, and that distinction is where the collection got its name.</p>
+          <p class="plate-caption">Monika Grzymala's tape installations. Aggression seeks to overpower; this seizes you. They are not the same thing.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2014-artez/expressive_02_reference_check.jpg" loading="lazy" decoding="async"
+        <img width="2400" height="2988" class="plate-img" src="images/2014-artez/expressive_02_reference_check.jpg" loading="lazy" decoding="async"
              alt="Reference board: buildings whose façades read as three-dimensional checks.">
         <figcaption class="plate-note">
           <span class="plate-label">Inspiration — not my own work</span>
-          <p class="plate-caption">Buildings chosen for their structure, not their surface. Taken apart, what makes a check is weaving — bands crossing bands, with depth and shadow doing what the printed pattern does flat. These façades carry that geometry in three dimensions, and that is what I brought into the collection.</p>
+          <p class="plate-caption">Buildings chosen for their structure, not their surface: bands crossing bands, with depth and shadow doing what a printed check does flat.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2014-artez/expressive_03_line_idea.jpg" loading="lazy" decoding="async"
+        <img width="2400" height="1161" class="plate-img" src="images/2014-artez/expressive_03_line_idea.jpg" loading="lazy" decoding="async"
              alt="Development drawings for line ideas: abstracted check variations, three-dimensional check studies, and line principles.">
         <figcaption class="plate-note">
           <span class="plate-label">Line and check studies</span>
@@ -1376,126 +1376,126 @@ body.acc .chapter-mark{display:block}
       </figure>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2014-artez/expressive_04_line_experiment.jpg" loading="lazy" decoding="async"
+        <img width="2400" height="1214" class="plate-img" src="images/2014-artez/expressive_04_line_experiment.jpg" loading="lazy" decoding="async"
              alt="Line experiments: dense machine stitching on cloth, a taped composition, and taping worked on the dress form.">
         <figcaption class="plate-note">
           <span class="plate-label">Line experiments</span>
-          <p class="plate-caption">Three studies. A domestic sewing machine used as a drawing tool, hundreds of stitched lines run freely across the cloth. The taping principle taken off the wall and worked directly on the stand. And check returned to its mechanism: yellow yarn woven irregularly through white cloth by hand, the fabric then taken to the stand for structural studies.</p>
+          <p class="plate-caption">An industrial sewing machine used as a drawing tool; the taping principle tested in paper; and check returned to its mechanism, yellow yarn woven irregularly through white cloth by hand.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2014-artez/expressive_05_draping.jpg" loading="lazy" decoding="async"
+        <img width="2400" height="2988" class="plate-img" src="images/2014-artez/expressive_05_draping.jpg" loading="lazy" decoding="async"
              alt="Vintage garments used as the source material for silhouette experiments.">
         <figcaption class="plate-note">
           <span class="plate-label">Source garments</span>
-          <p class="plate-caption">Vintage garments bought for what they carried rather than for their cloth: a checked suit, a leather jacket and a jersey top in a harsh colour for punk, and two oversized sweaters whose collars could be pulled up over the head — which I read as a way of enclosing and restricting a person. Each one held something from the list, and silhouette was developed by working on them directly.</p>
+          <p class="plate-caption">Vintage garments bought for what they carried rather than for their cloth — including two oversized sweaters whose collars could be pulled up over the head, which I read as a way of enclosing a person.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2014-artez/expressive_06_develop.jpg" loading="lazy" decoding="async"
+        <img width="2400" height="1729" class="plate-img" src="images/2014-artez/expressive_06_develop.jpg" loading="lazy" decoding="async"
              alt="Draping studies sorted by category: structure, leather, graphic.">
         <figcaption class="plate-note">
           <span class="plate-label">Design development I</span>
-          <p class="plate-caption">The checked suit turned inside out and draped on the stand. Reversed, a wide stripe stood out at the waist, and I took that as a graphic element — it went into both the front and the back of Look 2.</p>
+          <p class="plate-caption">The checked suit turned inside out. Reversed, a wide stripe stood out at the waist, and that became a graphic element in Look 2.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2014-artez/expressive_07_develop.jpg" loading="lazy" decoding="async"
+        <img width="2400" height="1734" class="plate-img" src="images/2014-artez/expressive_07_develop.jpg" loading="lazy" decoding="async"
              alt="Draping studies by category: arm and leg, knit, jersey.">
         <figcaption class="plate-note">
           <span class="plate-label">Design development II</span>
-          <p class="plate-caption">Sleeve and trouser leg draped separately on the stand, then developed several ways — some carried straight into a look, others printed and collaged back onto the figure.</p>
+          <p class="plate-caption">Sleeve and trouser leg from the checked suit combined several ways on the stand, some carried straight into a look, others printed and collaged back onto the figure.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2014-artez/expressive_08_sketch.jpg" loading="lazy" decoding="async"
+        <img width="2400" height="2988" class="plate-img" src="images/2014-artez/expressive_08_sketch.jpg" loading="lazy" decoding="async"
              alt="Rough drawings for looks 1 to 7, with variations, and the final line-up.">
         <figcaption class="plate-note">
           <span class="plate-label">Drawing and line-up</span>
-          <p class="plate-caption">Seven looks drawn out with variations, then resolved into a line-up. Three were made. The drawings are where the three elements were distributed — one look carrying the stitched line, one the woven check, one the taping.</p>
+          <p class="plate-caption">Seven looks drawn, three made — one carrying the stitched line, one the woven check, one the taping.</p>
         </figcaption>
       </figure>
 
       <figure class="plate looks rise">
-        <img class="plate-img look-main-img" src="images/2014-artez/expressive_look1_main.jpg" loading="lazy" decoding="async"
+        <img width="1800" height="2575" class="plate-img look-main-img" src="images/2014-artez/expressive_look1_main.jpg" loading="lazy" decoding="async"
              alt="Final look 1: white garment with red machine-stitched lines running down the front." data-label="Look 1">
         <div class="row looks-row">
-          <img class="plate-img" src="images/2014-artez/expressive_look1_a.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2511" class="plate-img" src="images/2014-artez/expressive_look1_a.jpg" loading="lazy" decoding="async"
                alt="Look 1, front, full length." data-label="Look 1"
               >
-          <img class="plate-img" src="images/2014-artez/expressive_look1_b.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2700" class="plate-img" src="images/2014-artez/expressive_look1_b.jpg" loading="lazy" decoding="async"
                alt="Look 1, back, showing the diagonal panels in white on white." data-label="Look 1"
               >
-          <img class="plate-img" src="images/2014-artez/expressive_look1_c.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2700" class="plate-img" src="images/2014-artez/expressive_look1_c.jpg" loading="lazy" decoding="async"
                alt="Look 1, detail of the red machine stitching." data-label="Look 1"
               >
         </div>
         <figcaption class="plate-note">
           <span class="plate-label">Look 1</span>
-          <p class="plate-caption">Red thread stitched by machine from the top of the garment down to the hem of the dress shirt. The density increases as it descends, until the lines read as a plane — the machine used the way a pencil is, drawing a line that erupts rather than following a path.</p>
+          <p class="plate-caption">Red thread stitched from the top of the garment to the hem, the density increasing as it descends until the lines read as a plane. The machine used the way a pencil is.</p>
         </figcaption>
       </figure>
 
       <figure class="plate looks rise">
-        <img class="plate-img look-main-img" src="images/2014-artez/expressive_look2_main.jpg" loading="lazy" decoding="async"
+        <img width="1800" height="2734" class="plate-img look-main-img" src="images/2014-artez/expressive_look2_main.jpg" loading="lazy" decoding="async"
              alt="Final look 2: white and grey with a plastic grid mesh panel and blue-lined bands." data-label="Look 2">
         <div class="row looks-row">
-          <img class="plate-img" src="images/2014-artez/expressive_look2_a.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2504" class="plate-img" src="images/2014-artez/expressive_look2_a.jpg" loading="lazy" decoding="async"
                alt="Look 2, front, full length with the grey drape falling to the floor." data-label="Look 2"
               >
-          <img class="plate-img" src="images/2014-artez/expressive_look2_b.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2700" class="plate-img" src="images/2014-artez/expressive_look2_b.jpg" loading="lazy" decoding="async"
                alt="Look 2, side, showing the mesh panel as a separate stiff sheet." data-label="Look 2"
               >
-          <img class="plate-img" src="images/2014-artez/expressive_look2_c.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2700" class="plate-img" src="images/2014-artez/expressive_look2_c.jpg" loading="lazy" decoding="async"
                alt="Look 2, detail of the banded strips curling and knotting at the waist." data-label="Look 2"
               >
-          <img class="plate-img" src="images/2014-artez/expressive_look2_d.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2669" class="plate-img" src="images/2014-artez/expressive_look2_d.jpg" loading="lazy" decoding="async"
              alt="Look 2, back, full length with the grey train." data-label="Look 2">
         </div>
         <figcaption class="plate-note">
           <span class="plate-label">Look 2</span>
-          <p class="plate-caption">The check returned to weaving. The grid panel is a plastic mesh bought as a craft material — chosen because it was already the thing itself, a check made by weaving rather than printed on. The wide stripe that appeared when the checked suit was reversed runs through both front and back.</p>
+          <p class="plate-caption">The grid panel is a plastic mesh sold as a craft material — a check made by weaving rather than printed on.</p>
         </figcaption>
       </figure>
 
       <figure class="plate looks rise">
-        <img class="plate-img look-main-img" src="images/2014-artez/expressive_look3_main.jpg" loading="lazy" decoding="async"
+        <img width="1800" height="2532" class="plate-img look-main-img" src="images/2014-artez/expressive_look3_main.jpg" loading="lazy" decoding="async"
              alt="Final look 3: white and pale blue with yellow and white strips crossing the body." data-label="Look 3">
         <div class="row looks-row">
-          <img class="plate-img" src="images/2014-artez/expressive_look3_a.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2700" class="plate-img" src="images/2014-artez/expressive_look3_a.jpg" loading="lazy" decoding="async"
                alt="Look 3, front, upper body, showing the strips knotting and releasing." data-label="Look 3"
               >
-          <img class="plate-img" src="images/2014-artez/expressive_look3_b.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2700" class="plate-img" src="images/2014-artez/expressive_look3_b.jpg" loading="lazy" decoding="async"
                alt="Look 3, back detail, strips crossing the back diagonally." data-label="Look 3"
               >
-          <img class="plate-img" src="images/2014-artez/expressive_look3_c.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2717" class="plate-img" src="images/2014-artez/expressive_look3_c.jpg" loading="lazy" decoding="async"
                alt="Look 3, back, upper body." data-label="Look 3"
               >
-          <img class="plate-img" src="images/2014-artez/expressive_look3_d.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2748" class="plate-img" src="images/2014-artez/expressive_look3_d.jpg" loading="lazy" decoding="async"
              alt="Look 3, side, full length with the pale blue skirt reaching the floor." data-label="Look 3">
         </div>
         <figcaption class="plate-note">
           <span class="plate-label">Look 3</span>
-          <p class="plate-caption">The taping, at full scale, and the woven check. Yellow yarn worked by hand through white cloth, irregularly, so the weave itself makes the pattern. Yellow and white strips cut and worked across the body the way tape crosses a wall — pulled taut where they hold, left long where they do not. This is the look that carries the collection's name most directly.</p>
+          <p class="plate-caption">Strips cut and worked across the body the way tape crosses a wall: taut where they hold, long where they do not.</p>
         </figcaption>
       </figure>
 
       <!-- ── 2014—2015 · Freedom in Disorder ───────────────────────────── -->
       <div class="chapter-head sub rise">
         <h2 class="chapter-title">Freedom in Disorder</h2>
-        <p class="chapter-meta"><span class="chapter-year">2014—2015</span><span class="sep">·</span>Seminar project</p>
+        <p class="chapter-meta"><span class="chapter-year">2014—2015</span><span class="sep">·</span>Short project · ArtEZ, Netherlands</p>
       </div>
 
       <div class="chapter-text rise">
-        <p>Given a pile of discarded garments and leftover cloth, we were asked to take whatever we wanted, cut it apart, and build one garment back out of it. No new material. A pinstriped suit, a nylon jacket, mesh, fleece, jersey — what I could make was decided by what was in the pile. It is the reverse of every other project here, where the material was chosen to answer the idea, and it is the only time I worked by reconstruction rather than construction.</p>
+        <p>A pile of discarded garments and no new material. What could be made was decided by what was in the pile — the reverse of every other project here, and the only time I worked by reconstruction rather than construction.</p>
       </div>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2014-artez/disorder_01_stand.jpg" loading="lazy" decoding="async"
+        <img width="2400" height="900" class="plate-img" src="images/2014-artez/disorder_01_stand.jpg" loading="lazy" decoding="async"
              alt="Four views of the reconstructed garment on the dress form.">
         <figcaption class="plate-note">
           <span class="plate-label">On the stand</span>
@@ -1503,19 +1503,19 @@ body.acc .chapter-mark{display:block}
       </figure>
 
       <figure class="plate looks rise">
-        <img class="plate-img look-main-img" src="images/2014-artez/disorder_look1_main.jpg" loading="lazy" decoding="async"
+        <img width="1800" height="2710" class="plate-img look-main-img" src="images/2014-artez/disorder_look1_main.jpg" loading="lazy" decoding="async"
              alt="Final look, front: reconstructed garment combining pinstripe, nylon, fleece and jersey." data-label="Final look">
         <div class="row looks-row">
-          <img class="plate-img" src="images/2014-artez/disorder_look1_a.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2603" class="plate-img" src="images/2014-artez/disorder_look1_a.jpg" loading="lazy" decoding="async"
                alt="Final look, side, full length." data-label="Final look"
               >
-          <img class="plate-img" src="images/2014-artez/disorder_look1_b.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2661" class="plate-img" src="images/2014-artez/disorder_look1_b.jpg" loading="lazy" decoding="async"
                alt="Final look, three-quarter, full length." data-label="Final look"
               >
-          <img class="plate-img" src="images/2014-artez/disorder_look1_c.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2738" class="plate-img" src="images/2014-artez/disorder_look1_c.jpg" loading="lazy" decoding="async"
                alt="Final look, back, showing the quilted nylon panel." data-label="Final look"
               >
-          <img class="plate-img" src="images/2014-artez/disorder_look1_d.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2700" class="plate-img" src="images/2014-artez/disorder_look1_d.jpg" loading="lazy" decoding="async"
                alt="Final look, detail of the shoulder where fleece, pinstripe and mesh meet." data-label="Final look"
               >
         </div>
@@ -1533,146 +1533,144 @@ body.acc .chapter-mark{display:block}
 
       <div class="chapter-head rise">
         <h2 class="chapter-title">Hazardous</h2>
-        <p class="chapter-meta"><span class="chapter-year">2015</span><span class="sep">·</span>ArtEZ University of the Arts</p>
+        <p class="chapter-meta"><span class="chapter-year">2015</span><span class="sep">·</span>ArtEZ University of the Arts, Netherlands</p>
       </div>
 
       <div class="chapter-text rise">
-        <p>The brief was to design a collection in the spirit of a house I had chosen. I chose Lanvin because its confident femininity already agreed with what I was working towards — an exaggerated silhouette carried by a woman who is independent and unhidden at once, whose beauty is displayed on her own terms rather than for anyone's gaze. I went to Paris to study the collections in the store, to watch how they were merchandised, and to try the garments on, reading how they were cut and finished. What followed was designed for that woman, not for the label. Every material in the collection was made first — prints developed from my own photographs, fabrics built as swatches — and only then taken to the stand to find silhouette and detail. Eighteen looks drawn, three made.</p>
+        <p>Designed in the spirit of Lanvin, for a woman whose beauty is displayed on her own terms rather than for anyone's gaze. The premise: that what reads as dangerous and unattractive can be turned into something compelling. Every material was made before anything was drawn.</p>
       </div>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2014-artez/hazardous_01_reference.jpg" loading="lazy" decoding="async"
+        <img width="2400" height="1553" class="plate-img" src="images/2014-artez/hazardous_01_reference.jpg" loading="lazy" decoding="async"
              alt="Reference board: photographs of earthquake and tsunami damage, with Hokusai's Great Wave.">
         <figcaption class="plate-note">
           <span class="plate-label">Inspiration — not my own work</span>
-          <p class="plate-caption">Photographs of the 2011 Tōhoku earthquake and tsunami, with Hokusai's Great Wave. What I took from them was structural: how sheet material tears rather than cuts, how layers shear past one another, how a surface holds the record of the force that moved it. The premise of the collection is that what reads as dangerous and unattractive can be reinterpreted into something compelling. The collection is named for that force, not for the event it came from.</p>
+          <p class="plate-caption">Photographs of the 2011 Tōhoku tsunami, with Hokusai's Great Wave. What I took was structural: how sheet material tears rather than cuts, how a surface holds the record of the force that moved it.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2014-artez/hazardous_02_vision.jpg" loading="lazy" decoding="async"
+        <img width="2400" height="2988" class="plate-img" src="images/2014-artez/hazardous_02_vision.jpg" loading="lazy" decoding="async"
              alt="Vision board: Klimt's Judith as muse, Lanvin store windows photographed in Paris, and dramatic editorial imagery.">
         <figcaption class="plate-note">
           <span class="plate-label">Includes images not my own work</span>
-          <p class="plate-caption">Klimt's <em>Judith</em> as the muse. She is exposed, but not for anyone's gaze — the beauty is hers to display, on her own terms. That is the woman the collection is for: confident rather than fragile, dramatic in gesture, revealing because she chooses to. The store windows were photographed in Paris; the editorial images are others' work.</p>
+          <p class="plate-caption">Klimt's <em>Judith</em> as the muse. Exposed, but not for anyone's gaze.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2014-artez/hazardous_03_print.jpg" loading="lazy" decoding="async"
+        <img width="8333" height="13654" class="plate-img" src="images/2014-artez/hazardous_03_print.jpg" loading="lazy" decoding="async"
              alt="Print development: photographs of moss, bark and ground surfaces printed onto silk and onto neoprene, with embellishment.">
         <figcaption class="plate-note">
           <span class="plate-label">Print development</span>
-          <p class="plate-caption">Conventional print has never much appealed to me — an image sitting flat on cloth. What I wanted was print with substance, so I photographed surfaces that already carried texture: moss, split bark, cracked ground, found in a park. Then I worked against the usual method. Metal thread and metal fittings were worked into the printed cloth; textured fabric was laid over it; and instead of silk or cotton I printed onto sponge and neoprene, materials print is not usually put on. A photograph of a split in wood, printed onto neoprene and fitted with metal, gave what I was after — a print with a hard, bold edge to it.</p>
+          <p class="plate-caption">Conventional print has never much appealed to me — an image sitting flat on cloth. I photographed surfaces that already carried texture, then printed onto sponge and neoprene rather than silk, and set metal into the printed cloth.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2014-artez/hazardous_04_swatch.jpg" loading="lazy" decoding="async"
+        <img width="8333" height="12354" class="plate-img" src="images/2014-artez/hazardous_04_swatch.jpg" loading="lazy" decoding="async"
              alt="Swatch development: textured and structural samples made from materials bought in Paris.">
         <figcaption class="plate-note">
           <span class="plate-label">Fabric development</span>
-          <p class="plate-caption">Materials bought across Paris — threads, meshes, films, metal fittings, ribbons — and worked into swatches carrying the mood of the reference board. Not embellishment in the decorative sense: structural, rough, bold, made to see how far a surface could be disturbed and still hold. These are the vocabulary the silhouettes were then built from.</p>
+          <p class="plate-caption">Structural, rough, bold: made to see how far a surface could be disturbed and still hold.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2014-artez/hazardous_05_material_a.jpg" loading="lazy" decoding="async"
+        <img width="2400" height="2362" class="plate-img" src="images/2014-artez/hazardous_05_material_a.jpg" loading="lazy" decoding="async"
              alt="Volume and material experiments worked directly on the dress form.">
         <figcaption class="plate-note">
           <span class="plate-label">Silhouette and detail development</span>
-          <p class="plate-caption">The prints and fabrics taken to the stand, worked to carry what the reference board was about: sheet material torn rather than cut, layers sheared past one another, a surface holding the record of the force that moved it. Silhouette was found here, not drawn first.</p>
+          <p class="plate-caption">Silhouette was found on the stand with the made materials, not drawn first.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2014-artez/hazardous_06_material_b.jpg" loading="lazy" decoding="async"
+        <img width="2400" height="2352" class="plate-img" src="images/2014-artez/hazardous_06_material_b.jpg" loading="lazy" decoding="async"
              alt="Further material experiments: fringing, wire, metal fragments and cut strips on the stand.">
         <figcaption class="plate-note">
           <span class="plate-label">Silhouette and detail development</span>
-          <p class="plate-caption">Fringing, wire, metal fragments, cut strips. The same forces tested as details across different materials, always on the body rather than flat, so that what held and what collapsed was visible immediately.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise">
         <div class="row row-2">
-          <img class="plate-img" src="images/2014-artez/hazardous_07_sketch_a.jpg" loading="lazy" decoding="async"
+          <img width="2400" height="2988" class="plate-img" src="images/2014-artez/hazardous_07_sketch_a.jpg" loading="lazy" decoding="async"
                alt="Design development sheets: illustration, flats, fabric swatch and stand photograph for each look."
                data-label="Design development"
               >
-          <img class="plate-img" src="images/2014-artez/hazardous_08_sketch_b.jpg" loading="lazy" decoding="async"
+          <img width="2400" height="2988" class="plate-img" src="images/2014-artez/hazardous_08_sketch_b.jpg" loading="lazy" decoding="async"
                alt="Further design development sheets for the remaining looks."
                data-label="Design development"
               >
         </div>
         <figcaption class="plate-note">
           <span class="plate-label">Design development</span>
-          <p class="plate-caption">Eighteen looks resolved one sheet at a time — illustration, technical flats, colour and material proposal, and the experiment each look came out of.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2014-artez/hazardous_09_line_up.jpg" loading="lazy" decoding="async"
+        <img width="2400" height="1553" class="plate-img" src="images/2014-artez/hazardous_09_line_up.jpg" loading="lazy" decoding="async"
              alt="Illustrated line-up of eighteen looks.">
         <figcaption class="plate-note">
           <span class="plate-label">Line-up</span>
-          <p class="plate-caption">Eighteen looks as one collection: coats, blazers, trousers, knit, print, and the proportions holding across all of them. Three were taken through to garments.</p>
+          <p class="plate-caption">Eighteen looks drawn, three made.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2014-artez/hazardous_10_fitting.jpg" loading="lazy" decoding="async"
+        <img width="2400" height="1229" class="plate-img" src="images/2014-artez/hazardous_10_fitting.jpg" loading="lazy" decoding="async"
              alt="Fittings: toiles on the model from three angles for each of the three looks.">
         <figcaption class="plate-note">
           <span class="plate-label">Fitting</span>
-          <p class="plate-caption">Toiles on the model, where the volumes were decided. What stands off the body on a form does not always stand off a person, and most of the proportion changes were made here.</p>
+          <p class="plate-caption">What stands off the body on a form does not always stand off a person. Most of the proportion changes were made here.</p>
         </figcaption>
       </figure>
 
       <figure class="plate looks rise">
-        <img class="plate-img look-main-img" src="images/2014-artez/hazardous_look1_main.jpg" loading="lazy" decoding="async"
+        <img width="1800" height="2700" class="plate-img look-main-img" src="images/2014-artez/hazardous_look1_main.jpg" loading="lazy" decoding="async"
              alt="Look 1: striped suiting with a wide asymmetric collar, front." data-label="Look 1">
         <div class="row looks-row">
-          <img class="plate-img" src="images/2014-artez/hazardous_look1_a.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2700" class="plate-img" src="images/2014-artez/hazardous_look1_a.jpg" loading="lazy" decoding="async"
                alt="Look 1, side, showing the collar and the layered panels." data-label="Look 1"
               >
-          <img class="plate-img" src="images/2014-artez/hazardous_look1_b.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2194" class="plate-img" src="images/2014-artez/hazardous_look1_b.jpg" loading="lazy" decoding="async"
                alt="Look 1, detail: whipstitched raw edges where the striped panels meet." data-label="Look 1"
               >
         </div>
         <figcaption class="plate-note">
           <span class="plate-label">Look 1</span>
-          <p class="plate-caption">The cloth was chosen for its texture: a woven stripe with a rough hand, its ends already fraying — which suited the tough register of the collection and worked at the cuffs and hem. The collar sits away from the neck and the silhouette widens above the waist. The frayed ends of the cloth were left as they were. They belonged to what the collection was about, so nothing was turned or faced.</p>
+          <p class="plate-caption">A woven stripe with a rough hand, its ends already fraying — left as they were, since they belonged to what the collection was about.</p>
         </figcaption>
       </figure>
 
       <figure class="plate looks rise">
-        <img class="plate-img look-main-img" src="images/2014-artez/hazardous_look2_main.jpg" loading="lazy" decoding="async"
+        <img width="1800" height="2700" class="plate-img look-main-img" src="images/2014-artez/hazardous_look2_main.jpg" loading="lazy" decoding="async"
              alt="Look 2: black wrap with a printed neoprene panel carrying gold metal pieces." data-label="Look 2">
         <div class="row looks-row">
-          <img class="plate-img" src="images/2014-artez/hazardous_look2_a.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2700" class="plate-img" src="images/2014-artez/hazardous_look2_a.jpg" loading="lazy" decoding="async"
                alt="Look 2, back, showing the sculpted panel and open back." data-label="Look 2"
               >
-          <img class="plate-img" src="images/2014-artez/hazardous_look2_b.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="1200" class="plate-img" src="images/2014-artez/hazardous_look2_b.jpg" loading="lazy" decoding="async"
                alt="Look 2, detail: the printed panel and gold pieces meeting the striped cloth." data-label="Look 2"
               >
         </div>
         <figcaption class="plate-note">
           <span class="plate-label">Look 2</span>
-          <p class="plate-caption">The panel is neoprene, printed with one of my own prints — a photograph of split bark and moss — and then hand-set with gold metal pieces. Neoprene took the print more sharply than sponge, and its body made it right for building volume. The print began as a photograph of a surface that had been split open, and ends as a panel with metal driven through it. The two ends of the process are visible in the same piece.</p>
+          <p class="plate-caption">Neoprene printed with a photograph of split bark and moss, then hand-set with gold metal. Neoprene took the print more sharply than sponge, and its body made it right for building volume. The print begins as a photograph of a surface split open and ends as a panel with metal driven through it.</p>
         </figcaption>
       </figure>
 
       <figure class="plate looks rise">
-        <img class="plate-img look-main-img" src="images/2014-artez/hazardous_look3_main.jpg" loading="lazy" decoding="async"
+        <img width="1800" height="2700" class="plate-img look-main-img" src="images/2014-artez/hazardous_look3_main.jpg" loading="lazy" decoding="async"
              alt="Look 3: deep navy dress, upper body, with the shoulder folded and the back cut away." data-label="Look 3">
         <div class="row looks-row">
-          <img class="plate-img" src="images/2014-artez/hazardous_look3_a.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2700" class="plate-img" src="images/2014-artez/hazardous_look3_a.jpg" loading="lazy" decoding="async"
              alt="Look 3, full length, with the train running out along the floor." data-label="Look 3">
         </div>
         <figcaption class="plate-note">
           <span class="plate-label">Look 3</span>
-          <p class="plate-caption">The quiet one. No print and no hardware — the whole look is cut and fold, with the shoulder built up and the back opened to the waist. It is the look that shows what the silhouette does once the surface work is taken away.</p>
+          <p class="plate-caption">No print and no hardware: the look that shows what the silhouette does once the surface work is taken away.</p>
         </figcaption>
       </figure>
 
@@ -1687,164 +1685,154 @@ body.acc .chapter-mark{display:block}
 
       <div class="chapter-head rise">
         <h2 class="chapter-title"><em>Joie de Vivre</em></h2>
-        <p class="chapter-meta"><span class="chapter-year">2016</span><span class="sep">·</span>Graduation Collection · ArtEZ · Atelier Néerlandais, Paris</p>
+        <p class="chapter-meta"><span class="chapter-year">2016</span><span class="sep">·</span>Graduation Collection · ArtEZ, Netherlands · Atelier Néerlandais, Paris</p>
       </div>
 
       <div class="chapter-text rise">
-        <p>The collection began with emotion. Drawing on the kinetic drawings of Heather Hansen and the expressiveness of Pina Bausch, I sat on the floor with large sheets of paper and drew with my whole body, releasing the spirit of freedom into movement. What the drawing left behind became the material: I photographed the charcoal residue on the floor and worked those images up into prints. Others came differently — white paint dripped across black cloth, drawn the same way, with the whole body moving; a line drawn in Illustrator — and one of those I made twice over, a second version for the jersey worn beneath the outer piece, so that a single look would read as one thing. Each print was silkscreened onto its own cloth, some smooth, one where the screen itself carried the texture. The trace of the movement is what carries the emotion through the collection.</p>
-        <p>And then the same gesture became form. I sat on the floor again, drawing this time on a piece of calico as large as the charcoal sheets had been, cut parts of those lines away and draped it on the stand — but the silhouette came out long and elaborate, closer to eveningwear than to anything I wanted. So I reduced: a few simplified lines on A4 paper and on calico cut to the same size, sections cut away, the cut edges pinned at two or three points on a miniature stand until a volume stood up on its own.</p>
-        <p>Then the prints became the drawing. I printed what I had developed onto sheets of paper, slashed them where the image seemed to ask for it, and draped those in miniature — and it was there that the looks of this collection came out. Prints that never reached cloth did their work here instead.</p>
-        <p>The last piece was made the other way round, and at full size: a rectangle of cloth cut to A0, lines drawn straight onto it in pen, parts cut away, draped on the full stand. I traced that same line into a print and bonded it onto the jersey worn beneath — the one absent, the other raised. Where the miniature had pins, the garments have magnets: release them and each outer piece lies flat as a rectangle again; join them and the same volume rises.</p>
-        <p>Emotion became movement, its trace became material, and incision and connection became form. What I was after was a free spirit that came through at every layer — in the act of drawing, in the prints and the texture they were given, in the silhouette itself, and finally on the skin of the people wearing it. The collection was not made for one gender, and male dancers were part of the presentation. This reversible transformation became the central mechanism of everything I have made since.</p>
-        <p>In the portfolio I wrote that year, I set down an ambition I had no means to act on yet: to develop smart textiles — to make the material do what my hands were doing here.</p>
+        <p>Emotion into form, and freedom into gesture. Drawing on Heather Hansen's kinetic drawings and the expressiveness of Pina Bausch, I drew on the floor with my whole body; the charcoal residue left behind became the prints, and the drawn lines, slashed and pinned, became the silhouettes. Sculptural outer pieces stand against the fluid jersey beneath them.</p>
+        <p>In the garments those pins are magnets: release them and each outer piece lies flat as a rectangle; join them and the same volume rises. The free spirit runs through every layer — the drawing, the print, the silhouette, and the face. Each piece is the joy of movement, held. The collection was not made for one gender, and male dancers were part of the presentation.</p>
       </div>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2016-joie/joie_01_reference.jpg" loading="lazy" decoding="async"
+        <img width="2000" height="1392" class="plate-img" src="images/2016-joie/joie_01_reference.jpg" loading="lazy" decoding="async"
              alt="Reference board: kinetic drawing, dance, and sculptural form.">
         <figcaption class="plate-note">
           <span class="plate-label">Inspiration — not my own work</span>
-          <p class="plate-caption">Drawing made with the whole body, and movement as the expression of freedom — the two things the collection set out from.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2016-joie/joie_02_prints.jpg" loading="lazy" decoding="async"
+        <img width="1400" height="2825" class="plate-img" src="images/2016-joie/joie_02_prints.jpg" loading="lazy" decoding="async"
              alt="Charcoal drawing on paper, print development from the residue, and the prints silkscreened onto cloth.">
         <figcaption class="plate-note">
           <span class="plate-label">Drawing into print</span>
-          <p class="plate-caption">Charcoal drawn on the floor with the whole body; the residue it left behind photographed and worked up into prints. Three were selected and silkscreened onto cloth, and two more came differently — white paint dripped across black fabric, and a line drawn in Illustrator, made a second time over for the jersey worn beneath the same outer piece.</p>
+          <p class="plate-caption">Charcoal drawn on the floor with the whole body, and the residue it left behind photographed and worked up into prints.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2016-joie/joie_03_cut.jpg" loading="lazy" decoding="async"
+        <img width="2000" height="2787" class="plate-img" src="images/2016-joie/joie_03_cut.jpg" loading="lazy" decoding="async"
              alt="Draping experiments: lines drawn, parts cut away, draped on the stand and in miniature.">
         <figcaption class="plate-note">
           <span class="plate-label">Cut away</span>
-          <p class="plate-caption">Lines drawn freehand, parts of them cut away, and what remained draped on the stand. The first attempt at full size came out long and elaborate, so the lines were reduced and the work moved to paper and to calico at a fraction of the scale.</p>
+          <p class="plate-caption">The first attempt at full size came out closer to eveningwear than to anything I wanted, so the lines were reduced and the work moved to a fraction of the scale.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2016-joie/joie_05_wall.jpg" loading="lazy" decoding="async"
+        <img width="2000" height="1500" class="plate-img" src="images/2016-joie/joie_05_wall.jpg" loading="lazy" decoding="async"
              alt="The studio wall covered with photographs of every miniature draping trial.">
         <figcaption class="plate-note">
           <span class="plate-label">Design development</span>
-          <p class="plate-caption">Every trial photographed and put up on the wall, so the collection could be chosen by comparison rather than one piece at a time.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2016-joie/joie_07_lineup.jpg" loading="lazy" decoding="async"
+        <img width="2400" height="1721" class="plate-img" src="images/2016-joie/joie_07_lineup.jpg" loading="lazy" decoding="async"
              alt="The decided line-up pinned to the wall, the made looks annotated in pencil and red with make-up direction for each one.">
         <figcaption class="plate-note">
           <span class="plate-label">Selected looks &amp; make-up idea</span>
-          <p class="plate-caption">The wall once the collection was settled, with fabric pinned beside each look and the face written under it. The make-up was worked out here, look by look, and drawn the way the prints had been drawn — with the whole hand moving.</p>
+          <p class="plate-caption">The make-up was worked out look by look, carrying each look's own print or the colours of the collection onto the face.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2016-joie/joie_04_silhouettes.jpg" loading="lazy" decoding="async"
+        <img width="2000" height="1962" class="plate-img" src="images/2016-joie/joie_04_silhouettes.jpg" loading="lazy" decoding="async"
              alt="Each selected silhouette worked out at body scale in mock-up material, with its flat pattern.">
         <figcaption class="plate-note">
           <span class="plate-label">Structure at body scale</span>
-          <p class="plate-caption">Each chosen silhouette rebuilt at the size of a person, with the flat pattern it came from — and the under-dress that would sit beneath it developed alongside.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2016-joie/joie_06_garment.jpg" loading="lazy" decoding="async"
+        <img width="2000" height="3005" class="plate-img" src="images/2016-joie/joie_06_garment.jpg" loading="lazy" decoding="async"
              alt="Each look taken from small toile to full size and into final cloth, with magnets set between the layers.">
         <figcaption class="plate-note">
           <span class="plate-label">Pattern to garment</span>
-          <p class="plate-caption">Each piece scaled up in stages until it met a body. One look was then remade in soft cloth from exactly the same pattern, and what came out was different enough to enter the collection as a look of its own.</p>
+          <p class="plate-caption">One look was remade in soft cloth from exactly the same pattern, and came out different enough to enter the collection on its own.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise">
         <div class="row row-2">
-          <img class="plate-img" src="images/2016-joie/detail_01_magnet.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2400" class="plate-img" src="images/2016-joie/detail_01_magnet.jpg" loading="lazy" decoding="async"
                alt="A perforated white outer panel laid flat, with small magnets set at marked positions." data-label="Magnets"
               >
-          <img class="plate-img" src="images/2016-joie/detail_02_magnet.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2400" class="plate-img" src="images/2016-joie/detail_02_magnet.jpg" loading="lazy" decoding="async"
                alt="A black outer panel laid flat on the table, a plain rectangle with magnets set along two edges." data-label="Magnets"
               >
         </div>
         <figcaption class="plate-note">
           <span class="plate-label">Magnets</span>
-          <p class="plate-caption">On the stand a pin holds a drape while it is still being decided; here the pin becomes a magnet and stays in the finished garment. Every one of these outer panels is cut as a rectangle. What makes them different looks is where the magnets sit and where the panel is slashed — move the magnets and the same piece of cloth folds into another shape, and released, it returns to what it was: a flat rectangle.</p>
+          <p class="plate-caption">Every outer panel is cut as a rectangle. What makes them different looks is where the magnets sit and where the panel is slashed; released, each returns to a flat rectangle.</p>
         </figcaption>
       </figure>
 
       <figure class="plate feature rise">
-        <img class="plate-img" src="images/2016-joie/look_01_lineup.jpg" loading="lazy" decoding="async"
+        <img width="2000" height="1414" class="plate-img" src="images/2016-joie/look_01_lineup.jpg" loading="lazy" decoding="async"
              alt="The full collection, eight looks." data-label="The collection">
         <figcaption class="plate-note">
           <span class="plate-label">The collection</span>
-          <p class="plate-caption"><em>Joie de Vivre</em>, graduation collection, ArtEZ. Presented at Atelier Néerlandais, Paris, 2016.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise">
         <div class="row row-2">
-          <img class="plate-img" src="images/2016-joie/look_03_detail.jpg" loading="lazy" decoding="async"
+          <img width="1600" height="2320" class="plate-img" src="images/2016-joie/look_03_detail.jpg" loading="lazy" decoding="async"
                alt="Detail: printed strips cut away, with a magnet closure." data-label="Detail">
-          <img class="plate-img" src="images/2016-joie/look_04_backs.jpg" loading="lazy" decoding="async"
+          <img width="1600" height="2125" class="plate-img" src="images/2016-joie/look_04_backs.jpg" loading="lazy" decoding="async"
                alt="The prints seen from behind." data-label="Detail">
         </div>
         <figcaption class="plate-note">
           <span class="plate-label">Print on the body</span>
-          <p class="plate-caption">The same line worked two ways: cut out of the outer piece, and bonded onto the jersey beneath it. Right, the dancers just before the performance.</p>
+          <p class="plate-caption">The same line worked two ways: cut out of the outer piece, and bonded onto the jersey beneath it.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2016-joie/look_02_group.jpg" loading="lazy" decoding="async"
+        <img width="2000" height="1414" class="plate-img" src="images/2016-joie/look_02_group.jpg" loading="lazy" decoding="async"
              alt="The collection presented in Paris." data-label="Presentation">
         <figcaption class="plate-note">
           <span class="plate-label">Presentation</span>
-          <p class="plate-caption">Shown as a performance rather than a runway, with dancers moving through the rooms.</p>
+          <p class="plate-caption">Not a fashion show. The dancers were given a set of keywords and moved freely, engaging with each other as they went.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2016-joie/look_09_presentation.jpg" loading="lazy" decoding="async"
+        <img width="1800" height="990" class="plate-img" src="images/2016-joie/look_09_presentation.jpg" loading="lazy" decoding="async"
              alt="The collection presented at Atelier Néerlandais, Paris: models standing still through the rooms of the apartment." data-label="Presentation">
         <figcaption class="plate-note">
           <span class="plate-label">Presentation · Atelier Néerlandais, Paris</span>
-          <p class="plate-caption">Not a fashion show. I gave the dancers a set of keywords and let them move freely, engaging with each other as they went, and the audience watched it unfold. The make-up carried the same concept as the prints — sprayed, drawn, painted — the freedom of spirit worked onto the face rather than onto paper or cloth.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2016-joie/look_10_presentation.jpg" loading="lazy" decoding="async"
+        <img width="1800" height="2764" class="plate-img" src="images/2016-joie/look_10_presentation.jpg" loading="lazy" decoding="async"
              alt="Two looks during the presentation: a printed white and black look, and a red look with a black structural panel at the hip." data-label="Presentation">
         <figcaption class="plate-note">
           <span class="plate-label">Presentation · two looks</span>
-          <p class="plate-caption">Both dancers are in performance here.</p>
         </figcaption>
       </figure>
 
       <figure class="plate looks-grid rise">
         <div class="row row-3">
-          <img class="plate-img" src="images/2016-joie/film_01.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2546" class="plate-img" src="images/2016-joie/film_01.jpg" loading="lazy" decoding="async"
                alt="Look, film shoot." data-label="Look">
-          <img class="plate-img" src="images/2016-joie/film_02.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2546" class="plate-img" src="images/2016-joie/film_02.jpg" loading="lazy" decoding="async"
                alt="Look, film shoot." data-label="Look">
-          <img class="plate-img" src="images/2016-joie/film_03.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2546" class="plate-img" src="images/2016-joie/film_03.jpg" loading="lazy" decoding="async"
                alt="Look, film shoot." data-label="Look">
-          <img class="plate-img" src="images/2016-joie/film_04.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2546" class="plate-img" src="images/2016-joie/film_04.jpg" loading="lazy" decoding="async"
                alt="Look, film shoot, worn by the male dancer." data-label="Look">
-          <img class="plate-img" src="images/2016-joie/film_05.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2546" class="plate-img" src="images/2016-joie/film_05.jpg" loading="lazy" decoding="async"
                alt="Look, film shoot, worn by the male dancer, the piece opened out." data-label="Look">
-          <img class="plate-img" src="images/2016-joie/film_06.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2546" class="plate-img" src="images/2016-joie/film_06.jpg" loading="lazy" decoding="async"
                alt="Look, film shoot." data-label="Look">
-          <img class="plate-img" src="images/2016-joie/film_07.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2546" class="plate-img" src="images/2016-joie/film_07.jpg" loading="lazy" decoding="async"
                alt="Look, film shoot, in movement." data-label="Look">
-          <img class="plate-img" src="images/2016-joie/film_08.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2546" class="plate-img" src="images/2016-joie/film_08.jpg" loading="lazy" decoding="async"
                alt="Look, film shoot." data-label="Look">
-          <img class="plate-img" src="images/2016-joie/film_10.jpg" loading="lazy" decoding="async"
+          <img width="1800" height="2546" class="plate-img" src="images/2016-joie/film_10.jpg" loading="lazy" decoding="async"
                alt="Look, film shoot, side." data-label="Look">
         </div>
         <figcaption class="plate-note">
@@ -1854,11 +1842,10 @@ body.acc .chapter-mark{display:block}
       </figure>
 
       <figure class="plate closer rise">
-        <img class="plate-img" src="images/2016-joie/film_09.jpg" loading="lazy" decoding="async"
+        <img width="1800" height="2546" class="plate-img" src="images/2016-joie/film_09.jpg" loading="lazy" decoding="async"
              alt="The striped print with the cut strips lifting away." data-label="Detail">
         <figcaption class="plate-note">
           <span class="plate-label">Closer</span>
-          <p class="plate-caption">The striped print, with the cut strips lifting away from the surface.</p>
         </figcaption>
       </figure>
 
@@ -1867,24 +1854,24 @@ body.acc .chapter-mark{display:block}
                poster="images/2016-joie/look_08_film.jpg"></video>
         <figcaption class="plate-note" style="max-width:900px;margin-inline:auto">
           <span class="plate-label">Film</span>
-          <p class="plate-caption">The same pieces filmed again, and directed differently. The Paris presentation was the joy itself; this is the way to it — difficulty worked through, and then left behind for somewhere better. That is what <em>joie de vivre</em> means to me: not the pleasure of a moment, but what is understood on the way out of one. Film by Studio Julius Thissen; hair and make-up by Vannessa Chan.</p>
+          <p class="plate-caption">The Paris presentation was the joy itself; this is the way to it — difficulty worked through, then left behind for somewhere better. That is what <em>joie de vivre</em> means to me. Film by Studio Julius Thissen; hair and make-up by Vannessa Chan.</p>
         </figcaption>
       </figure>
 
       <figure class="plate mid rise">
-        <img class="plate-img" src="images/2016-joie/joie_08_rack.jpg" loading="lazy" decoding="async"
+        <img width="1254" height="1254" class="plate-img" src="images/2016-joie/joie_08_rack.jpg" loading="lazy" decoding="async"
              alt="The collection hung on a rail against the panelled wall of the Paris apartment, sandals lined up on paper beneath." data-label="On the rail">
         <figcaption class="plate-note">
           <span class="plate-label">On the rail</span>
-          <p class="plate-caption">Paris, before it started — the only time the collection is seen off the body. The outer pieces hang as what they are: rectangles of cloth, waiting for the magnets to be closed.</p>
+          <p class="plate-caption">The only time the collection is seen off the body: rectangles of cloth, waiting for the magnets to be closed.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2016-joie/look_07_backstage.jpg" loading="lazy" decoding="async"
-             alt="Backstage before the presentation." data-label="Backstage">
+        <img width="2000" height="880" class="plate-img" src="images/2016-joie/look_07_backstage.jpg" loading="lazy" decoding="async"
+             alt="In performance before the presentation." data-label="In performance">
         <figcaption class="plate-note">
-          <span class="plate-label">Backstage</span>
+          <span class="plate-label">In performance</span>
         </figcaption>
       </figure>
 
@@ -1902,51 +1889,47 @@ body.acc .chapter-mark{display:block}
       </div>
 
       <div class="chapter-text rise">
-        <p>To realize transforming material through the material itself rather than through my hands, I had to understand the technology directly. I designed custom shape-memory alloy geometries, reshaping the material from its default straight form into the zigzag profiles my folding structure required; working through repeated iterations with a fabrication partner, I arrived at the exact size and form I had drawn — making the material follow the structure I intended, rather than the other way around.</p>
-        <p>Shape-memory alloy only moves one way, though — it takes the new shape and holds it — and it is metal: stiff against cloth, and awkward to join to it. Shape-memory polymer did not return on its own either. Liquid crystal elastomer was the first material that met both conditions, and printing it directly onto the textile was how to place it exactly where the structure needed it.</p>
-        <p>Working with a liquid crystal elastomer formulation developed by an engineering lab, I printed across a range of textile substrates to determine which would hold the material and actuate reliably, identifying the fabric that gave both stable adhesion and effective folding. On that substrate I developed a series of actuation patterns, testing how printed geometry governs the direction and degree of transformation, until the collaboration ended.</p>
-        <p>These material collaborations ran alongside my doctoral research rather than forming part of it. At the first lab neither route worked: printed onto textile and drawn into fibre, the material would not actuate reliably or return. At the second the actuation did work, and I kept developing by printing while fibre work ran in parallel, contributing what an engineering lab does not have on hand: what a fibre must satisfy before it can be spun, stitched and woven at all.</p>
-        <p>Since 2014 I had been making forms open and return by hand. Now it was happening in the material itself.</p>
+        <p>Making the material do what my hands had been doing. Shape-memory alloy moves one way only and stays where it lands; liquid crystal elastomer was the first material that transformed and returned, and printing it directly onto textile placed it exactly where the structure needed it. Throughout, the question was the same: which geometry decides the transformation.</p>
       </div>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2019-engineering/engineering_01_concept.jpg" loading="lazy" decoding="async"
+        <img width="8333" height="4733" class="plate-img" src="images/2019-engineering/engineering_01_concept.jpg" loading="lazy" decoding="async"
              alt="The concept proposed in 2019: a sensed condition triggers heat, and the form changes reversibly.">
         <figcaption class="plate-note">
           <span class="plate-label">Concept · 2019</span>
-          <p class="plate-caption">The mechanism I proposed in 2019, to a research centre working across design and engineering: a condition is sensed, a heating element responds, the form changes, and it returns as it cools. The pieces shown here are from the liquid crystal elastomer work that reached it four years later.</p>
+          <p class="plate-caption">The mechanism I proposed to a research centre working across design and engineering: a condition is sensed, a heating element responds, the form changes, and it returns as it cools.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2019-engineering/engineering_02_sma_design.jpg" loading="lazy" decoding="async"
+        <img width="8333" height="11390" class="plate-img" src="images/2019-engineering/engineering_02_sma_design.jpg" loading="lazy" decoding="async"
              alt="Shape-memory alloy: design drawings, formed alloy, and the alloy set into textile structures before and after heat.">
         <figcaption class="plate-note">
           <span class="plate-label">Shape-memory alloy</span>
-          <p class="plate-caption">The alloy comes as straight wire, which could not hold the folding structure I intended. I drew zigzag geometries and, through iterations with a fabrication partner, had forming jigs made to those drawings — making the material follow the structure rather than the other way around.</p>
+          <p class="plate-caption">The alloy comes as straight wire, which could not hold the folding structure I intended. I drew zigzag geometries and had forming jigs made to those drawings — making the material follow the structure rather than the other way around.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2019-engineering/engineering_03_sma_folding.jpg" loading="lazy" decoding="async"
+        <img width="8333" height="11317" class="plate-img" src="images/2019-engineering/engineering_03_sma_folding.jpg" loading="lazy" decoding="async"
              alt="Folding structures developed in paper, then built in textile with the alloy set into the folds.">
         <figcaption class="plate-note">
           <span class="plate-label">Folding structure</span>
-          <p class="plate-caption">The fold was designed first in paper, then built in cloth with the alloy running along the fold lines, so that the structure and the actuator share one geometry. Under heat it takes the folded shape — and holds it. The movement goes one way only.</p>
+          <p class="plate-caption">The fold was designed in paper first, then built in cloth with the alloy running along the fold lines, so structure and actuator share one geometry.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2019-engineering/engineering_04_lce_substrate.jpg" loading="lazy" decoding="async"
+        <img width="2230" height="1888" class="plate-img" src="images/2019-engineering/engineering_04_lce_substrate.jpg" loading="lazy" decoding="async"
              alt="Liquid crystal elastomer printed across a range of textile substrates and compared.">
         <figcaption class="plate-note">
           <span class="plate-label">Substrate selection · LCE</span>
-          <p class="plate-caption">The engineering lab developed the formulation; I mixed to that ratio and printed across a range of fabrics, comparing how the line held on surfaces of differing hydrophobicity. The final choice was made on adhesion and on how effectively the printed line folded.</p>
+          <p class="plate-caption">The engineering lab developed the formulation; I mixed to that ratio and printed across a range of fabrics, choosing on adhesion and on how effectively the printed line folded.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2019-engineering/engineering_05_lce_patterns.jpg" loading="lazy" decoding="async"
+        <img width="2744" height="1536" class="plate-img" src="images/2019-engineering/engineering_05_lce_patterns.jpg" loading="lazy" decoding="async"
              alt="Actuation patterns designed, printed, heated and released.">
         <figcaption class="plate-note">
           <span class="plate-label">Actuation patterns · LCE</span>
@@ -1954,11 +1937,11 @@ body.acc .chapter-mark{display:block}
       </figure>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2019-engineering/engineering_06_lce_variation.jpg" loading="lazy" decoding="async"
+        <img width="2736" height="1536" class="plate-img" src="images/2019-engineering/engineering_06_lce_variation.jpg" loading="lazy" decoding="async"
              alt="Line spacing varied systematically and the resulting actuation compared.">
         <figcaption class="plate-note">
           <span class="plate-label">Pattern variation · LCE</span>
-          <p class="plate-caption">Spacing and offset varied step by step within a single pattern, to find how far printed geometry alone can govern the direction and degree of the fold.</p>
+          <p class="plate-caption">Spacing and offset varied step by step, to find how far printed geometry alone governs the direction and degree of the fold.</p>
         </figcaption>
       </figure>
 
@@ -1966,7 +1949,7 @@ body.acc .chapter-mark{display:block}
         <video class="loop" src="video/sma_actuation.mp4" muted autoplay loop playsinline preload="metadata"></video>
         <figcaption class="plate-note">
           <span class="plate-label">Actuation · SMA</span>
-          <p class="plate-caption">The zigzag-formed alloy drawing the folded textile closed under a heat gun. Sped up; the change takes about twenty seconds, and it does not come back.</p>
+          <p class="plate-caption">Sped up; the change takes about twenty seconds, and it does not come back.</p>
         </figcaption>
       </figure>
 
@@ -1975,14 +1958,14 @@ body.acc .chapter-mark{display:block}
           <video class="loop" src="video/lce_wave.mp4" muted autoplay loop playsinline preload="metadata"></video>
           <figcaption class="plate-note">
           <span class="plate-label">Actuation · LCE · wave</span>
-          <p class="plate-caption">Lines printed at even intervals: the cloth lifts into a repeating wave as the plate heats, and lies flat again as it cools.</p>
+          <p class="plate-caption">The cloth lifts into a repeating wave as the plate heats, and lies flat again as it cools.</p>
         </figcaption>
         </figure>
         <figure class="plate" style="margin-top:0">
           <video class="loop" src="video/lce_actuation.mp4" muted autoplay loop playsinline preload="metadata"></video>
           <figcaption class="plate-note">
           <span class="plate-label">Actuation · LCE · curl</span>
-          <p class="plate-caption">The same material, a different printed geometry: here the sheet curls right over. The pattern decides the shape the fold takes.</p>
+          <p class="plate-caption">The same material, a different printed geometry: here the sheet curls right over.</p>
         </figcaption>
         </figure>
       </div>
@@ -1997,82 +1980,81 @@ body.acc .chapter-mark{display:block}
 
       <div class="chapter-head rise">
         <h2 class="chapter-title">Structure as Sensor</h2>
-        <p class="chapter-meta"><span class="chapter-year">2023—2026</span><span class="sep">·</span>Doctoral Research · Yonsei University</p>
+        <p class="chapter-meta"><span class="chapter-year">2023—2026</span><span class="sep">·</span>Doctoral Research · Yonsei University, Seoul</p>
       </div>
 
       <div class="chapter-text rise">
-        <p>The sensor picks up the breath not through how much a material stretches, but through the change in contact area that structure creates. I designed the inner three-dimensional structure and the outer pattern together, and built every component to be detachable, modular, and adjustable in size, carrying it from concept to a wireless monitoring prototype and validating how it behaves on the body under real wearing conditions.</p>
+        <p>A wearable sensor in which the textile structure, rather than the material, is the sensing mechanism. It picks up the breath not through how much a material stretches but through the change in contact area that structure creates — which makes form, not material, the design variable.</p>
       </div>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2023-doctoral/doctoral_01_beltsystem_patterns.jpg" loading="lazy" decoding="async"
+        <img width="2000" height="1779" class="plate-img" src="images/2023-doctoral/doctoral_01_beltsystem_patterns.jpg" loading="lazy" decoding="async"
              alt="Belt system construction and the six structural patterns tested.">
         <figcaption class="plate-note">
           <span class="plate-label">Structural matrix</span>
-          <p class="plate-caption">Three interweaving patterns — zigzag, moss, pile — each tested in vertical and horizontal layout, so that form could be isolated as the variable and set directly against sensing performance.</p>
+          <p class="plate-caption">Three interweaving patterns — zigzag, moss, pile — each in vertical and horizontal layout, so form could be isolated as the variable and set against sensing performance.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2023-doctoral/doctoral_02_fillers.jpg" loading="lazy" decoding="async"
+        <img width="2000" height="2257" class="plate-img" src="images/2023-doctoral/doctoral_02_fillers.jpg" loading="lazy" decoding="async"
              alt="The filler layer in three sizes.">
         <figcaption class="plate-note">
           <span class="plate-label">Filler</span>
-          <p class="plate-caption">The inner three-dimensional structure. As the chest expands, the inner filler and the outer pattern press against one another and the area where they touch changes — and that change is what the sensor picks up. Inner and outer were designed together, which is why structure rather than material is the design variable here.</p>
+          <p class="plate-caption">As the chest expands, the inner filler and the outer pattern press against one another and the area where they touch changes. Inner and outer were designed together.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2023-doctoral/doctoral_03_belts.jpg" loading="lazy" decoding="async"
+        <img width="2000" height="1064" class="plate-img" src="images/2023-doctoral/doctoral_03_belts.jpg" loading="lazy" decoding="async"
              alt="The constructed belts: zigzag in horizontal layout and moss in vertical layout.">
         <figcaption class="plate-note">
           <span class="plate-label">Constructed belts</span>
-          <p class="plate-caption">Built as three separable layers — pattern part, filler, base band — so that any combination can be exchanged without remaking the belt.</p>
+          <p class="plate-caption">Three separable layers, so any combination can be exchanged without remaking the belt.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2023-doctoral/doctoral_04_connection.jpg" loading="lazy" decoding="async"
+        <img width="2000" height="2050" class="plate-img" src="images/2023-doctoral/doctoral_04_connection.jpg" loading="lazy" decoding="async"
              alt="Assembly sequence and the conductive thread connection method.">
         <figcaption class="plate-note">
           <span class="plate-label">Connection method</span>
-          <p class="plate-caption">A single continuous conductive thread runs from the rubber through the winding and spiral stitch to the snap interface, so the electrical path never breaks at a joint.</p>
+          <p class="plate-caption">A single continuous conductive thread runs from the rubber to the snap interface, so the electrical path never breaks at a joint.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2023-doctoral/doctoral_05_sensor.jpg" loading="lazy" decoding="async"
+        <img width="2000" height="2814" class="plate-img" src="images/2023-doctoral/doctoral_05_sensor.jpg" loading="lazy" decoding="async"
              alt="The sensor module and the snap-attached readout board.">
         <figcaption class="plate-note">
           <span class="plate-label">Sensor module</span>
-          <p class="plate-caption">The readout board attaches by snap fasteners and folds inside the pattern body, so the electronics are enclosed by the structure rather than mounted on top of it.</p>
+          <p class="plate-caption">The board folds inside the pattern body, enclosed by the structure rather than mounted on top of it.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2023-doctoral/doctoral_06_modular.jpg" loading="lazy" decoding="async"
+        <img width="2000" height="2116" class="plate-img" src="images/2023-doctoral/doctoral_06_modular.jpg" loading="lazy" decoding="async"
              alt="All components separated, and assembled.">
         <figcaption class="plate-note">
           <span class="plate-label">Modular assembly</span>
-          <p class="plate-caption">Every component detachable and adjustable in size, so a single device can be reconfigured rather than rebuilt — and washed or replaced part by part.</p>
+          <p class="plate-caption">Every component detachable and adjustable, so the device can be reconfigured rather than rebuilt — and washed or replaced part by part.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise feature">
-        <img class="plate-img" src="images/2023-doctoral/doctoral_07_worn.jpg" loading="lazy" decoding="async"
+        <img width="1881" height="705" class="plate-img" src="images/2023-doctoral/doctoral_07_worn.jpg" loading="lazy" decoding="async"
              alt="The device worn, seen from four sides, with parallel and crossed straps.">
         <figcaption class="plate-note">
           <span class="plate-label">Worn · four configurations</span>
-          <p class="plate-caption">The straps can be worn parallel or crossed, so one device meets different bodies and different ways of wearing it.</p>
         </figcaption>
       </figure>
 
       <figure class="plate rise">
-        <img class="plate-img" src="images/2023-doctoral/doctoral_08_wireless.jpg" loading="lazy" decoding="async"
+        <img width="2000" height="1916" class="plate-img" src="images/2023-doctoral/doctoral_08_wireless.jpg" loading="lazy" decoding="async"
              alt="The wireless system and the live breathing signal read on a phone, worn on the body.">
         <figcaption class="plate-note">
           <span class="plate-label">Wireless prototype · on the body</span>
-          <p class="plate-caption">Carried from concept to a working wireless prototype and validated in wear: the breath as a live waveform. No separate sensing element was added — the structure itself is the sensor.</p>
+          <p class="plate-caption">Carried to a working wireless prototype and validated in wear. No separate sensing element was added: the structure itself is the sensor.</p>
         </figcaption>
       </figure>
 
@@ -2085,11 +2067,11 @@ body.acc .chapter-mark{display:block}
     <div class="wrap">
       <h2 class="closing-title">Now —<br>Responsive Matter</h2>
       <div class="closing-text">
-        <p>I am now moving toward research in which form senses a person and transforms in answer. I want to resolve which forms modulate a person's state — the moment a clouded mind wakes and attention is drawn — and to follow that principle outward from the body toward the space that surrounds it.</p>
+        <p>Form that senses a person and transforms in answer. The work runs along two axes: the external, where responsive materials sense conditions in the environment and transform to protect the body; and the internal, where form meets a person's state — anxiety, sleeplessness, cognitive overload — and answers it. I begin with cognitive arousal, the moment a clouded mind wakes and attention is drawn, and follow that principle outward from the body toward the space around it.</p>
       </div>
 
       <div class="definition">
-        <p><strong>Sentient Aesthetics</strong>: form that senses, and the aesthetic judgment of what that sensing does to the person who meets it. Responsive matter is what I work with; this is what I work toward.</p>
+        <p><strong>Sentient Aesthetics</strong>: form that senses, and the aesthetic judgment of what that sensing does to the person who meets it. Not devices, but experiences — ones that happen to be beautiful.</p>
       </div>
     </div>
   </section>

@@ -27,7 +27,7 @@
 <meta property="og:description" content="Forms that respond to a person and transform">
 <meta property="og:image" content="https://stellarminseokim.github.io/images/og-card.jpg">
 <meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="900">
+<meta property="og:image:height" content="1200">
 <meta property="og:image:alt" content="A line drawing of many overlapping curves, with the name Stellar Kim.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Stellar Kim">
@@ -129,7 +129,10 @@ a{color:inherit}
 /* ─── SPINE ────────────────────────────────────────────────────────────────
    A single hairline running the height of the page with the four years on it.
    The current year fills solid as you scroll: a flat mark becoming a volume. */
+/* the spine keeps a tighter inner margin than the page, so the longest
+   label (STRUCTURE AS SENSOR) fits without widening the rail */
 .spine{
+  --gutter:40px;
   position:fixed;
   top:0; left:0; bottom:0;
   width:var(--spine);
@@ -206,9 +209,12 @@ a{color:inherit}
 /* ─── PAGE FRAME ─────────────────────────────────────────────────────────── */
 .page{
   margin-left:var(--spine);
-  padding:0 var(--gutter) 0 0;
+  padding:0 var(--gutter);
 }
-.wrap{max-width:var(--board-max)}
+/* The 1180px column is centred in whatever space is left beside the spine.
+   On a laptop the column already fills that space, so nothing moves; on a
+   wide monitor the slack is split evenly instead of piling up on the right. */
+.wrap{max-width:var(--board-max);margin-inline:auto}
 
 /* ─── OPENING ────────────────────────────────────────────────────────────── */
 .opening{
@@ -750,7 +756,7 @@ body.acc .chapter-mark{display:block}
   <a class="spine-link" href="#yhazardous" data-year="yhazardous">HAZARDOUS</a>
   <a class="spine-link" href="#yjoie" data-year="yjoie">JOIE DE VIVRE</a>
   <a class="spine-link" href="#yengineering" data-year="yengineering">TRANSFORMATION</a>
-  <a class="spine-link" href="#ydoctoral" data-year="ydoctoral">TEXTILE SENSOR</a>
+  <a class="spine-link" href="#ydoctoral" data-year="ydoctoral">STRUCTURE AS SENSOR</a>
   <a class="spine-link" href="#now" data-year="now">NOW</a>
 </nav>
 
@@ -765,7 +771,7 @@ body.acc .chapter-mark{display:block}
   <a class="spine-link" href="#yhazardous" data-year="yhazardous">HAZARDOUS</a>
   <a class="spine-link" href="#yjoie" data-year="yjoie">JOIE DE VIVRE</a>
   <a class="spine-link" href="#yengineering" data-year="yengineering">TRANSFORMATION</a>
-  <a class="spine-link" href="#ydoctoral" data-year="ydoctoral">TEXTILE SENSOR</a>
+  <a class="spine-link" href="#ydoctoral" data-year="ydoctoral">STRUCTURE AS SENSOR</a>
   <a class="spine-link" href="#now" data-year="now">NOW</a>
 </nav>
 
@@ -818,7 +824,7 @@ body.acc .chapter-mark{display:block}
         </a>
         <a class="index-item" href="#yengineering">
           <span class="index-year">2019—</span>
-          <span class="index-title">Transformation in the Material</span>
+          <span class="index-title">Material as Mechanism</span>
         </a>
         <a class="index-item" href="#ydoctoral">
           <span class="index-year">2023—2026</span>
@@ -833,8 +839,12 @@ body.acc .chapter-mark{display:block}
       
 
       <figure class="plate rise">
-        <img width="2000" height="1155" decoding="async" fetchpriority="high" class="plate-img" src="images/2007-parsons/parsons_01_draping.jpg"
-             alt="Draping studies on the dress form: a length of cloth worked into volume, shown as a full silhouette and as a grid of close variations.">
+        <div class="row looks-row">
+          <img width="2400" height="1855" decoding="async" fetchpriority="high" class="plate-img" src="images/2007-parsons/parsons_01_draping.jpg"
+               alt="Draping studies on the stand: one length of cloth worked into volume, shown from three angles." data-label="Draping · 2007—2009">
+          <img width="1864" height="2400" decoding="async" class="plate-img" src="images/2007-parsons/parsons_02_draping.jpg"
+               alt="A board of draping studies in dark satin, worked and reworked on the stand." data-label="Draping · 2007—2009">
+        </div>
         <figcaption class="plate-note">
           <span class="plate-label">Draping · 2007—2009</span>
           <p class="plate-caption">A single length of cloth worked over the stand until a volume stood on its own — the silhouettes came freely, straight from the hand.</p>
@@ -964,7 +974,7 @@ body.acc .chapter-mark{display:block}
       </figure>
 
       <figure class="plate rise">
-        <img width="1362" height="1155" class="plate-img" src="images/2007-parsons/undefined_03_development_a.jpg" loading="lazy" decoding="async"
+        <img width="2222" height="1888" class="plate-img" src="images/2007-parsons/undefined_03_development_a.jpg" loading="lazy" decoding="async"
              alt="Design development sheets: sketches, pattern drafts, toile fittings and fabric swatches for the first looks.">
         <figcaption class="plate-note">
           <span class="plate-label">Design development I</span>
@@ -973,7 +983,7 @@ body.acc .chapter-mark{display:block}
       </figure>
 
       <figure class="plate rise">
-        <img width="1358" height="1158" class="plate-img" src="images/2007-parsons/undefined_04_development_b.jpg" loading="lazy" decoding="async"
+        <img width="2400" height="2014" class="plate-img" src="images/2007-parsons/undefined_04_development_b.jpg" loading="lazy" decoding="async"
              alt="Design development sheets for the later looks: trouser drafts, spiral seaming and the folded panel of the final piece.">
         <figcaption class="plate-note">
           <span class="plate-label">Design development II</span>
@@ -989,11 +999,20 @@ body.acc .chapter-mark{display:block}
         </figcaption>
       </figure>
 
+      <figure class="plate feature rise">
+        <img width="1414" height="1800" class="plate-img" src="images/2007-parsons/undefined_look2_c.jpg" loading="lazy" decoding="async"
+             alt="The collection: the standing shoulder of the satin blouse, close." data-label="The collection">
+        <figcaption class="plate-note">
+          <span class="plate-label">The collection</span>
+          <p class="plate-caption"><em>Undefined Shape with Refined Structure</em>, graduation collection, Parsons, 2011.</p>
+        </figcaption>
+      </figure>
+
       <figure class="plate looks rise">
-        <img width="792" height="1008" class="plate-img look-main-img" src="images/2007-parsons/undefined_look1_main.jpg" loading="lazy" decoding="async"
+        <img width="1414" height="1800" class="plate-img look-main-img" src="images/2007-parsons/undefined_look1_main.jpg" loading="lazy" decoding="async"
              alt="Cream cashmere tunic with angular panels, worn over satin trousers." data-label="Look one">
         <div class="row looks-row">
-          <img width="792" height="1008" class="plate-img" src="images/2007-parsons/undefined_look1_b.jpg" loading="lazy" decoding="async"
+          <img width="1414" height="1800" class="plate-img" src="images/2007-parsons/undefined_look1_b.jpg" loading="lazy" decoding="async"
              alt="The same cashmere piece seen from the side, showing the woven strip closure." data-label="Look one">
         </div>
         <figcaption class="plate-note">
@@ -1004,16 +1023,12 @@ body.acc .chapter-mark{display:block}
 
       <figure class="plate looks rise">
         <div class="row looks-row">
-          <img width="792" height="1008" class="plate-img" src="images/2007-parsons/undefined_look2_a.jpg" loading="lazy" decoding="async"
+          <img width="1414" height="1800" class="plate-img" src="images/2007-parsons/undefined_look2_a.jpg" loading="lazy" decoding="async"
                alt="Silk and wool satin blouse with a standing shoulder panel, worn with an asymmetric skirt."
                data-label="Look two"
               >
-          <img width="792" height="1008" class="plate-img" src="images/2007-parsons/undefined_look2_b.jpg" loading="lazy" decoding="async"
+          <img width="1414" height="1800" class="plate-img" src="images/2007-parsons/undefined_look2_b.jpg" loading="lazy" decoding="async"
                alt="The same look from the back, the shoulder panel standing clear."
-               data-label="Look two"
-              >
-          <img width="1800" height="2115" class="plate-img" src="images/2007-parsons/undefined_look2_c.jpg" loading="lazy" decoding="async"
-               alt="Close detail of the shoulder, showing the folded seam that holds the panel upright."
                data-label="Look two"
               >
         </div>
@@ -1025,11 +1040,11 @@ body.acc .chapter-mark{display:block}
 
       <figure class="plate looks rise">
         <div class="row looks-row">
-          <img width="792" height="1008" class="plate-img" src="images/2007-parsons/undefined_look3_a.jpg" loading="lazy" decoding="async"
+          <img width="1414" height="1800" class="plate-img" src="images/2007-parsons/undefined_look3_a.jpg" loading="lazy" decoding="async"
                alt="Silk garza asymmetric top worn with grey satin trousers carrying an exaggerated structure at the hip."
                data-label="Look three"
               >
-          <img width="792" height="1008" class="plate-img" src="images/2007-parsons/undefined_look3_b.jpg" loading="lazy" decoding="async"
+          <img width="1414" height="1800" class="plate-img" src="images/2007-parsons/undefined_look3_b.jpg" loading="lazy" decoding="async"
                alt="The same look from the side, the hip structure standing away from the leg."
                data-label="Look three"
               >
@@ -1041,15 +1056,15 @@ body.acc .chapter-mark{display:block}
 
       <figure class="plate looks rise">
         <div class="row looks-row">
-          <img width="792" height="1008" class="plate-img" src="images/2007-parsons/undefined_look4_a.jpg" loading="lazy" decoding="async"
+          <img width="1414" height="1800" class="plate-img" src="images/2007-parsons/undefined_look4_a.jpg" loading="lazy" decoding="async"
                alt="Architectural short dress in cashmere and double-faced satin, the satin running as a curve across the body."
                data-label="Look four"
               >
-          <img width="792" height="1008" class="plate-img" src="images/2007-parsons/undefined_look4_b.jpg" loading="lazy" decoding="async"
+          <img width="1414" height="1800" class="plate-img" src="images/2007-parsons/undefined_look4_b.jpg" loading="lazy" decoding="async"
                alt="The same dress from another angle, the shoulder rising into a point."
                data-label="Look four"
               >
-          <img width="792" height="1008" class="plate-img" src="images/2007-parsons/undefined_look4_c.jpg" loading="lazy" decoding="async"
+          <img width="1414" height="1800" class="plate-img" src="images/2007-parsons/undefined_look4_c.jpg" loading="lazy" decoding="async"
                alt="The dress from the side, the woven strip detail visible at the back."
                data-label="Look four"
               >
@@ -1061,11 +1076,11 @@ body.acc .chapter-mark{display:block}
 
       <figure class="plate looks rise">
         <div class="row looks-row">
-          <img width="791" height="1008" class="plate-img" src="images/2007-parsons/undefined_look5_a.jpg" loading="lazy" decoding="async"
+          <img width="1413" height="1800" class="plate-img" src="images/2007-parsons/undefined_look5_a.jpg" loading="lazy" decoding="async"
                alt="Long skirt with spiral seams in wool and silk, worn with a draped silk garza top."
                data-label="Look five"
               >
-          <img width="792" height="1008" class="plate-img" src="images/2007-parsons/undefined_look5_b.jpg" loading="lazy" decoding="async"
+          <img width="1414" height="1800" class="plate-img" src="images/2007-parsons/undefined_look5_b.jpg" loading="lazy" decoding="async"
                alt="Close view of the draped silk garza top at the shoulder."
                data-label="Look five"
               >
@@ -1078,11 +1093,11 @@ body.acc .chapter-mark{display:block}
 
       <figure class="plate looks rise">
         <div class="row looks-row">
-          <img width="792" height="1008" class="plate-img" src="images/2007-parsons/undefined_look6_a.jpg" loading="lazy" decoding="async"
+          <img width="1414" height="1800" class="plate-img" src="images/2007-parsons/undefined_look6_a.jpg" loading="lazy" decoding="async"
                alt="Full-length grey gown with a large folded panel across the shoulder and a quilted section at the waist."
                data-label="Look six · signature piece"
               >
-          <img width="792" height="1008" class="plate-img" src="images/2007-parsons/undefined_look6_b.jpg" loading="lazy" decoding="async"
+          <img width="1414" height="1800" class="plate-img" src="images/2007-parsons/undefined_look6_b.jpg" loading="lazy" decoding="async"
                alt="Close view of the folded shoulder panel and the quilted satin at the waist."
                data-label="Look six · signature piece"
               >
@@ -1350,7 +1365,7 @@ body.acc .chapter-mark{display:block}
       </div>
 
       <figure class="plate rise">
-        <img width="2400" height="1839" class="plate-img" src="images/2014-artez/expressive_01_reference_line.jpg" loading="lazy" decoding="async"
+        <img width="2400" height="1813" class="plate-img" src="images/2014-artez/expressive_01_reference_line.jpg" loading="lazy" decoding="async"
              alt="Reference board: tape and thread installations, line-based sculpture and architecture.">
         <figcaption class="plate-note">
           <span class="plate-label">Inspiration — not my own work</span>
@@ -1359,7 +1374,7 @@ body.acc .chapter-mark{display:block}
       </figure>
 
       <figure class="plate rise">
-        <img width="2400" height="2988" class="plate-img" src="images/2014-artez/expressive_02_reference_check.jpg" loading="lazy" decoding="async"
+        <img width="1698" height="2400" class="plate-img" src="images/2014-artez/expressive_02_reference_check.jpg" loading="lazy" decoding="async"
              alt="Reference board: buildings whose façades read as three-dimensional checks.">
         <figcaption class="plate-note">
           <span class="plate-label">Inspiration — not my own work</span>
@@ -1430,9 +1445,11 @@ body.acc .chapter-mark{display:block}
           <img width="1800" height="2700" class="plate-img" src="images/2014-artez/expressive_look1_b.jpg" loading="lazy" decoding="async"
                alt="Look 1, back, showing the diagonal panels in white on white." data-label="Look 1"
               >
-          <img width="1800" height="2700" class="plate-img" src="images/2014-artez/expressive_look1_c.jpg" loading="lazy" decoding="async"
-               alt="Look 1, detail of the red machine stitching." data-label="Look 1"
+          <img width="1200" height="1800" class="plate-img" src="images/2014-artez/expressive_look1_c.jpg" loading="lazy" decoding="async"
+               alt="Look 1, the red machine stitching at close range." data-label="Look 1"
               >
+          <img width="1200" height="1800" class="plate-img" src="images/2014-artez/expressive_look1_d.jpg" loading="lazy" decoding="async"
+             alt="Look 1, the stitched lines where they begin at the shoulder." data-label="Look 1">
         </div>
         <figcaption class="plate-note">
           <span class="plate-label">Look 1</span>
@@ -1884,7 +1901,7 @@ body.acc .chapter-mark{display:block}
     <div class="wrap">
 
       <div class="chapter-head rise">
-        <h2 class="chapter-title">Transformation in the Material</h2>
+        <h2 class="chapter-title">Material as Mechanism</h2>
         <p class="chapter-meta"><span class="chapter-year">2019—</span><span class="sep">·</span>Shape-Memory Alloy · Liquid Crystal Elastomer 4D Printing</p>
       </div>
 

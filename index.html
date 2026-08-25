@@ -475,16 +475,20 @@ a{color:inherit}
    hole under the landscape one. The portrait board leads at 62% and the
    landscape sits beside it at 38%, top edges aligned; the caption runs full
    width underneath, as on every other plate.                             */
-.draping-row{
+/* Written as .draping-fig .draping-row rather than .draping-row alone: the
+   .looks-row media queries further down would otherwise reset the columns to
+   equal widths on any window narrower than 900px, which is what kept this row
+   looking unchanged. Two class names outrank one, in any media query.      */
+.draping-fig .draping-row{
   grid-template-columns:62fr 38fr;
   align-items:start;
 }
-.draping-row .plate-img:nth-child(1){order:2}   /* landscape, right  */
-.draping-row .plate-img:nth-child(2){order:1}   /* portrait board, left */
+.draping-fig .draping-row .plate-img:nth-child(1){order:2}   /* landscape, right */
+.draping-fig .draping-row .plate-img:nth-child(2){order:1}   /* portrait board, left */
 @media (max-width:560px){
-  .draping-row{grid-template-columns:1fr}
-  .draping-row .plate-img:nth-child(1){order:1}
-  .draping-row .plate-img:nth-child(2){order:2}
+  .draping-fig .draping-row{grid-template-columns:1fr}
+  .draping-fig .draping-row .plate-img:nth-child(1){order:1}
+  .draping-fig .draping-row .plate-img:nth-child(2){order:2}
 }
 /* Two columns everywhere, so a supporting frame reads at about 580px. An
    ID rule used to pin Undefined Shape to three — it also outranked the

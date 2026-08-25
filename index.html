@@ -75,9 +75,29 @@
 ================================================================================
 -->
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500&family=Big+Shoulders+Display:wght@300;400;500;600&family=Spectral:wght@200;300;400;500&display=swap" rel="stylesheet">
+<!-- ─── TYPE ──────────────────────────────────────────────────────────────
+     The fonts are served from this repository rather than from Google. Two
+     reasons: nothing about a visit is reported to a third party, and the
+     files can be preloaded by their exact address. Preloading is what stops
+     the page from jumping — the old setup fetched a stylesheet, then the
+     fonts, then re-drew every line of text in the real face once they
+     arrived, which changed the height of every paragraph under your thumb.
+     Now the faces are there before the first paint. All are subset to Latin;
+     the whole set is 283 KB.                                              -->
+<link rel="preload" href="fonts/BigShouldersDisplay-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/BarlowCondensed-Medium.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/Spectral-Light.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Big Shoulders Display';src:url('fonts/BigShouldersDisplay-var.woff2') format('woff2-variations');font-weight:300 600;font-display:block}
+@font-face{font-family:'Barlow Condensed';src:url('fonts/BarlowCondensed-Light.woff2') format('woff2');font-weight:300;font-display:block}
+@font-face{font-family:'Barlow Condensed';src:url('fonts/BarlowCondensed-Regular.woff2') format('woff2');font-weight:400;font-display:block}
+@font-face{font-family:'Barlow Condensed';src:url('fonts/BarlowCondensed-Medium.woff2') format('woff2');font-weight:500;font-display:block}
+@font-face{font-family:'Spectral';src:url('fonts/Spectral-ExtraLight.woff2') format('woff2');font-weight:200;font-display:block}
+@font-face{font-family:'Spectral';src:url('fonts/Spectral-Light.woff2') format('woff2');font-weight:300;font-display:block}
+@font-face{font-family:'Spectral';src:url('fonts/Spectral-Regular.woff2') format('woff2');font-weight:400;font-display:block}
+@font-face{font-family:'Spectral';src:url('fonts/Spectral-Medium.woff2') format('woff2');font-weight:500;font-display:block}
+@font-face{font-family:'Spectral';src:url('fonts/Spectral-LightItalic.woff2') format('woff2');font-weight:300;font-style:italic;font-display:block}
+</style>
 
 <style>
 /* ─── TOKENS ──────────────────────────────────────────────────────────────
@@ -449,6 +469,23 @@ a{color:inherit}
   gap:clamp(10px,1.4vw,20px);
   align-items:start;
 }
+
+/* ── DRAPING ROW ──────────────────────────────────────────────────────
+   The two draping images have opposite proportions, so equal columns left a
+   hole under the landscape one. The portrait board leads at 62% and the
+   landscape sits beside it at 38%, top edges aligned; the caption runs full
+   width underneath, as on every other plate.                             */
+.draping-row{
+  grid-template-columns:62fr 38fr;
+  align-items:start;
+}
+.draping-row .plate-img:nth-child(1){order:2}   /* landscape, right  */
+.draping-row .plate-img:nth-child(2){order:1}   /* portrait board, left */
+@media (max-width:560px){
+  .draping-row{grid-template-columns:1fr}
+  .draping-row .plate-img:nth-child(1){order:1}
+  .draping-row .plate-img:nth-child(2){order:2}
+}
 /* Two columns everywhere, so a supporting frame reads at about 580px. An
    ID rule used to pin Undefined Shape to three — it also outranked the
    media queries below, so that section stayed at three on a phone and its
@@ -755,7 +792,7 @@ body.acc .chapter-mark{display:block}
   <a class="spine-link" href="#yexpressive" data-year="yexpressive">EXPRESSIVE</a>
   <a class="spine-link" href="#yhazardous" data-year="yhazardous">HAZARDOUS</a>
   <a class="spine-link" href="#yjoie" data-year="yjoie">JOIE DE VIVRE</a>
-  <a class="spine-link" href="#yengineering" data-year="yengineering">TRANSFORMATION</a>
+  <a class="spine-link" href="#yengineering" data-year="yengineering">TRANSFORM</a>
   <a class="spine-link" href="#ydoctoral" data-year="ydoctoral">STRUCTURE AS SENSOR</a>
   <a class="spine-link" href="#now" data-year="now">NOW</a>
 </nav>
@@ -770,7 +807,7 @@ body.acc .chapter-mark{display:block}
   <a class="spine-link" href="#yexpressive" data-year="yexpressive">EXPRESSIVE</a>
   <a class="spine-link" href="#yhazardous" data-year="yhazardous">HAZARDOUS</a>
   <a class="spine-link" href="#yjoie" data-year="yjoie">JOIE DE VIVRE</a>
-  <a class="spine-link" href="#yengineering" data-year="yengineering">TRANSFORMATION</a>
+  <a class="spine-link" href="#yengineering" data-year="yengineering">TRANSFORM</a>
   <a class="spine-link" href="#ydoctoral" data-year="ydoctoral">STRUCTURE AS SENSOR</a>
   <a class="spine-link" href="#now" data-year="now">NOW</a>
 </nav>
@@ -838,8 +875,8 @@ body.acc .chapter-mark{display:block}
 
       
 
-      <figure class="plate rise">
-        <div class="row looks-row">
+      <figure class="plate draping-fig rise">
+        <div class="row looks-row draping-row">
           <img width="2400" height="1855" decoding="async" fetchpriority="high" class="plate-img" src="images/2007-parsons/parsons_01_draping.jpg"
                alt="Draping studies on the stand: one length of cloth worked into volume, shown from three angles." data-label="Draping · 2007—2009">
           <img width="1864" height="2400" decoding="async" class="plate-img" src="images/2007-parsons/parsons_02_draping.jpg"
@@ -1745,7 +1782,7 @@ body.acc .chapter-mark{display:block}
       </figure>
 
       <figure class="plate rise">
-        <img width="2400" height="1721" class="plate-img" src="images/2016-joie/joie_07_lineup.jpg" loading="lazy" decoding="async"
+        <img width="1486" height="1058" class="plate-img" src="images/2016-joie/joie_07_lineup.jpg" loading="lazy" decoding="async"
              alt="The decided line-up pinned to the wall, the made looks annotated in pencil and red with make-up direction for each one.">
         <figcaption class="plate-note">
           <span class="plate-label">Selected looks &amp; make-up idea</span>
@@ -2099,6 +2136,9 @@ body.acc .chapter-mark{display:block}
   </footer>
 
 </main>
+
+
+
 
 
 
